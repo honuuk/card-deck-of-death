@@ -10,7 +10,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       { isStart
-        ? <Work next={next} setNext={setNext} />
+        ? <Work setIsStart={setIsStart} />
         : <Landing handlePress={() => setIsStart(true)} />
       }
       
