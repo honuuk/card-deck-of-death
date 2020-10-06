@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Card, Button } from 'react-native-elements';
+
 import Landing from './components/Landing';
 import Work from './components/Work';
 
@@ -9,11 +10,11 @@ export default function App() {
   const [isStart, setIsStart] = useState(false);
   return (
     <View style={styles.container}>
-      { isStart
-        ? <Work setIsStart={setIsStart} />
-        : <Landing handlePress={() => setIsStart(true)} />
-      }
-      
+      {isStart ? (
+        <Work setIsStart={setIsStart} />
+      ) : (
+        <Landing handlePress={() => setIsStart(true)} />
+      )}
     </View>
   );
 }
