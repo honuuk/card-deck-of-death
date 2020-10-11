@@ -1,20 +1,19 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { Card, Button } from 'react-native-elements';
+import { StyleSheet, View } from 'react-native';
 
 import Landing from './components/Landing';
 import Work from './components/Work';
+import { EventHandler } from './types';
 
 export default function App() {
-  const [next, setNext] = useState('');
   const [isStart, setIsStart] = useState(false);
+
+  const handleStart: EventHandler = () => setIsStart(true);
+  const handleReset: EventHandler = () => setIsStart(false);
+
   return (
     <View style={styles.container}>
-      {isStart ? (
-        <Work setIsStart={setIsStart} />
-      ) : (
-        <Landing handlePress={() => setIsStart(true)} />
-      )}
+      {isStart ? <Work handleReset={handleReset} /> : <Landing handleStart={handleStart} />}
     </View>
   );
 }
@@ -22,8 +21,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: 'yellow',
   },
 });

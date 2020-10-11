@@ -1,14 +1,23 @@
 import React from 'react';
-import { View } from "react-native"
+import { StyleSheet, View } from 'react-native';
 import { Button } from 'react-native-elements';
 
-const Landing = ({ handlePress }) => {
+import { LandingProps } from '../types';
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#ffffff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
+
+const Landing = (props: LandingProps) => {
+  const { handleStart } = props;
   return (
-    <View>
-      <Button
-        title="Let's work out!"
-        onPress={handlePress}
-      />
+    <View style={styles.container}>
+      <Button title="Let's work out!" onPress={handleStart} />
     </View>
   );
 };
