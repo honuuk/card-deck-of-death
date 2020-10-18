@@ -10,36 +10,81 @@ const styles = StyleSheet.create({
   },
   header: {
     flex: 1,
-    backgroundColor: 'red',
   },
   content: {
-    flex: 7,
-    backgroundColor: 'blue',
+    flex: 5,
     alignItems: 'center',
   },
   timer: {
-    flex: 1,
+    flex: 0.5,
     width: '100%',
-    backgroundColor: 'orange',
     justifyContent: 'center',
+    alignItems: 'center',
   },
   timer_text: {
-    fontSize: 40,
-    textAlign: 'center',
+    width: 235,
+    fontSize: 50,
+    color: '#1c4abd',
+    fontWeight: '800',
+    textShadowColor: '#cdcdcd',
+    textShadowOffset: { width: 4, height: 4 },
+    textShadowRadius: 0,
   },
   card_wrap: {
-    flex: 5,
+    flex: 2,
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#fcf1d2',
+  },
+  result: {
+    flex: 1,
+    textAlign: 'center',
+    width: '100%',
+    fontSize: 60,
+    fontWeight: '800',
+    color: 'red',
+    textShadowOffset: { width: 4, height: 4 },
+    textShadowRadius: 0,
+    transform: [{ rotate: '-15deg' }],
   },
   action_name: {
     flex: 1,
     width: '100%',
-    backgroundColor: 'orange',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  action_name_text: {
+    fontSize: 50,
+    fontWeight: '800',
+    color: '#ff802b',
+    textAlign: 'center',
+    textShadowColor: '#1c4abd',
+    textShadowOffset: { width: 3, height: 3 },
+    textShadowRadius: 0,
+  },
+  return_to_start: {
+    width: 170,
+    height: 60,
+    justifyContent: 'center',
+    backgroundColor: 'red',
+    borderWidth: 1,
+    borderRadius: 10,
+    borderColor: 'red',
+    borderBottomWidth: 0,
+    shadowColor: '#acacac',
+    shadowOffset: { width: 3, height: 3 },
+    shadowOpacity: 1,
+    shadowRadius: 0,
+  },
+  return_to_start_text: {
+    textAlign: 'center',
+    color: 'white',
+    fontSize: 20,
+    fontWeight: '600',
   },
   footer: {
-    flex: 1,
-    backgroundColor: 'white',
+    height: 70,
   },
   back_arrow: {
     flex: 1,
@@ -69,7 +114,7 @@ const Work = (props: WorkProps) => {
 
   const startTimer = () => {
     if (endTime) return;
-    setEndTime(Date.now() + 900000);
+    setEndTime(Date.now() + 5000);
     setTime(Date.now());
   };
 
@@ -96,7 +141,7 @@ const Work = (props: WorkProps) => {
   useEffect(() => {
     if (time !== 0) {
       const timer = setInterval(() => {
-        setTime(Date.now());
+        setTime(Math.min(Date.now(), endTime));
       }, 30);
       return () => clearInterval(timer);
     }
@@ -115,14 +160,28 @@ const Work = (props: WorkProps) => {
       </View>
       <View style={styles.content}>
         <View style={styles.timer}>
-          <Text style={styles.timer_text}>{endTime ? makeTime(endTime - time) : '15:00:00'}</Text>
+          {!(endTime !== 0 && endTime - time === 0) && (
+            <Text style={styles.timer_text}>{endTime ? makeTime(endTime - time) : '15:00:00'}</Text>
+          )}
         </View>
         <View style={styles.card_wrap}>
-          <Card selectedCard={CardType.back} startTimer={startTimer} addCount={addCount} />
-          <Card selectedCard={CardType.spadeA} />
+          {endTime !== 0 && endTime - time === 0 ? (
+            <Text style={styles.result}>Fail</Text>
+          ) : (
+            <>
+              <Card selectedCard={CardType.back} startTimer={startTimer} addCount={addCount} />
+              <Card selectedCard={CardType.spadeK} />
+            </>
+          )}
         </View>
         <View style={styles.action_name}>
-          <Text>molar</Text>
+          {!(endTime !== 0 && endTime - time === 0) ? (
+            <Text style={styles.action_name_text}>Squat 3 times</Text>
+          ) : (
+            <TouchableOpacity style={styles.return_to_start} onPress={handleClear}>
+              <Text style={styles.return_to_start_text}>return to start</Text>
+            </TouchableOpacity>
+          )}
         </View>
       </View>
       <View style={styles.footer}>

@@ -38,9 +38,6 @@ const imageMap = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'black',
-    borderColor: 'white',
-    borderWidth: 1,
     margin: '5%',
     aspectRatio: 3 / 4,
     alignItems: 'center',
