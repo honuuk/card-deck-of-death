@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
-import { Button } from 'react-native-elements';
 
 import { CardType, WorkProps } from '../types';
 import Card from './Card';
@@ -55,29 +54,54 @@ const styles = StyleSheet.create({
   },
 });
 
-const cardSet = [
-  [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11],
-  [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11],
-  [10, 10],
-  [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11],
-  [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11],
-];
-
-const end = [];
-const type = ['스쿼트', '스쿼트', '스쿼트', '왼쪽 런지', '오른쪽 런지'];
-
 const Work = (props: WorkProps) => {
   const { handleReset } = props;
+  const [endTime, setEndTime] = useState(0);
+  const [time, setTime] = useState(0);
   const [count, setCount] = useState(0);
-  const [cards, setCards] = useState(cardSet);
-  const [next, setNext] = useState('');
-  // const [end, setEnd] = useState([]);
+
   const handleClear = () => {
-    setCards(cardSet);
     setCount(0);
-    setNext('');
+    setEndTime(0);
+    setTime(0);
     handleReset();
   };
+
+  const startTimer = () => {
+    if (endTime) return;
+    setEndTime(Date.now() + 900000);
+    setTime(Date.now());
+  };
+
+  const addCount = () => {
+    setCount(count + 1);
+  };
+
+  const padZero = (t: number) => {
+    const stringNum = t.toString();
+    return stringNum.length === 1 ? '0' + stringNum : stringNum;
+  };
+
+  const makeTime = (t: number) => {
+    let leftTime: number = t;
+    const min = Math.floor(leftTime / 60000);
+    leftTime = leftTime % 60000;
+    const sec = Math.floor(leftTime / 1000);
+    leftTime = leftTime % 1000;
+    const ms = Math.floor(leftTime / 10);
+
+    return [min, sec, ms].map(padZero).join(':');
+  };
+
+  useEffect(() => {
+    if (time !== 0) {
+      const timer = setInterval(() => {
+        setTime(Date.now());
+      }, 30);
+      return () => clearInterval(timer);
+    }
+  }, [time]);
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -91,10 +115,10 @@ const Work = (props: WorkProps) => {
       </View>
       <View style={styles.content}>
         <View style={styles.timer}>
-          <Text style={styles.timer_text}>00:00:00</Text>
+          <Text style={styles.timer_text}>{endTime ? makeTime(endTime - time) : '15:00:00'}</Text>
         </View>
         <View style={styles.card_wrap}>
-          <Card selectedCard={CardType.back} />
+          <Card selectedCard={CardType.back} startTimer={startTimer} addCount={addCount} />
           <Card selectedCard={CardType.spadeA} />
         </View>
         <View style={styles.action_name}>

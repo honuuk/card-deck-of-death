@@ -10,6 +10,8 @@ export interface WorkProps {
 
 export interface CardProps {
   selectedCard: CardType;
+  startTimer?: EventHandler;
+  addCount?: EventHandler;
 }
 
 export enum CardType {

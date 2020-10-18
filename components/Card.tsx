@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, StyleSheet, TouchableOpacity } from 'react-native';
 
-import { CardProps, CardType } from '../types';
+import { CardProps, CardType, EventHandler } from '../types';
 
 const back = require('../public/card_back.png');
 const spade10 = require('../public/spade10.png');
@@ -53,12 +53,20 @@ const styles = StyleSheet.create({
 });
 
 const Card = (props: CardProps) => {
-  const { selectedCard } = props;
+  const { selectedCard, startTimer, addCount } = props;
+
+  const handlePress: EventHandler = () => {
+    if (startTimer && addCount) {
+      startTimer();
+      addCount();
+    }
+  };
 
   return (
     <TouchableOpacity
       style={styles.container}
-      activeOpacity={selectedCard === CardType.back ? 0.9 : 1}>
+      activeOpacity={selectedCard === CardType.back ? 0.9 : 1}
+      onPress={handlePress}>
       <Image style={styles.image} source={imageMap[selectedCard]} resizeMode='contain' />
     </TouchableOpacity>
   );
