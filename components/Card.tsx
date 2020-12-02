@@ -18,18 +18,12 @@ const styles = StyleSheet.create({
 });
 
 const Card = (props: CardProps) => {
-  const { source, startTimer, addCount } = props;
-  const handlePress: EventHandler = () => {
-    if (startTimer && addCount) {
-      startTimer();
-      addCount();
-    }
-  };
+  const { source, handlePress } = props;
 
   return (
     <TouchableOpacity
       style={styles.container}
-      activeOpacity={startTimer && addCount ? 0.9 : 1}
+      activeOpacity={handlePress ? 0.9 : 1}
       onPress={handlePress}>
       <Image style={styles.image} source={source} resizeMode='contain' />
     </TouchableOpacity>

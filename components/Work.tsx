@@ -21,25 +21,30 @@ const diamonds4 = require('../public/4_of_diamonds.png');
 const hearts4 = require('../public/4_of_hearts.png');
 const spades4 = require('../public/4_of_spades.png');
 const clubs5 = require('../public/5_of_clubs.png');
+const diamonds5 = require('../public/5_of_diamonds.png');
 const hearts5 = require('../public/5_of_hearts.png');
-const clubs6 = require('../public/6_of_clubs.png');
-const clubs7 = require('../public/7_of_clubs.png');
-const clubs8 = require('../public/8_of_clubs.png');
-const clubs9 = require('../public/9_of_clubs.png');
 const spades5 = require('../public/5_of_spades.png');
+const clubs6 = require('../public/6_of_clubs.png');
+const diamonds6 = require('../public/6_of_diamonds.png');
 const hearts6 = require('../public/6_of_hearts.png');
 const spades6 = require('../public/6_of_spades.png');
+const clubs7 = require('../public/7_of_clubs.png');
+const diamonds7 = require('../public/7_of_diamonds.png');
 const hearts7 = require('../public/7_of_hearts.png');
 const spades7 = require('../public/7_of_spades.png');
+const clubs8 = require('../public/8_of_clubs.png');
+const diamonds8 = require('../public/8_of_diamonds.png');
 const hearts8 = require('../public/8_of_hearts.png');
 const spades8 = require('../public/8_of_spades.png');
+const clubs9 = require('../public/9_of_clubs.png');
 const diamonds9 = require('../public/9_of_diamonds.png');
 const hearts9 = require('../public/9_of_hearts.png');
 const spades9 = require('../public/9_of_spades.png');
-const clubsA = require('../public/ace_of_clubs2.png');
-const diamondsA = require('../public/ace_of_diamonds2.png');
-const heartsA = require('../public/ace_of_hearts2.png');
+const clubsA = require('../public/ace_of_clubs.png');
+const diamondsA = require('../public/ace_of_diamonds.png');
+const heartsA = require('../public/ace_of_hearts.png');
 const spadesA = require('../public/ace_of_spades2.png');
+const jokerB = require('../public/black_joker.png');
 const back = require('../public/card_back.png');
 const clubsJ = require('../public/jack_of_clubs2.png');
 const diamondsJ = require('../public/jack_of_diamonds2.png');
@@ -49,14 +54,11 @@ const clubsK = require('../public/king_of_clubs2.png');
 const diamondsK = require('../public/king_of_diamonds2.png');
 const heartsK = require('../public/king_of_hearts2.png');
 const spadesK = require('../public/king_of_spades2.png');
+const clubsQ = require('../public/queen_of_clubs2.png');
+const diamondsQ = require('../public/queen_of_diamonds2.png');
 const heartsQ = require('../public/queen_of_hearts2.png');
 const spadesQ = require('../public/queen_of_spades2.png');
-const clubsQ = require('../public/queen_of_clubs2.png');
-const diamonds5 = require('../public/5_of_diamonds.png');
-const diamonds6 = require('../public/6_of_diamonds.png');
-const diamonds7 = require('../public/7_of_diamonds.png');
-const diamonds8 = require('../public/8_of_diamonds.png');
-const diamondsQ = require('../public/queen_of_diamonds2.png');
+const jokerR = require('../public/red_joker.png');
 
 const imageMap = {
   [CardType.back]: back,
@@ -112,6 +114,8 @@ const imageMap = {
   [CardType.diamondsJ]: diamondsJ,
   [CardType.diamondsQ]: diamondsQ,
   [CardType.diamondsK]: diamondsK,
+  [CardType.jokerB]: jokerB,
+  [CardType.jokerR]: jokerR,
 };
 
 const styles = StyleSheet.create({
@@ -211,33 +215,43 @@ const styles = StyleSheet.create({
 
 const Work = (props: WorkProps) => {
   const { handleReset } = props;
-  const [endTime, setEndTime] = useState(0);
-  const [time, setTime] = useState(0);
-  const [count, setCount] = useState(0);
+  const [cards, setCards] = useState<number[]>([...Array(54)].map((_, i) => i));
+  const [selectedCard, setSelectedCard] = useState<CardType | null>(null);
+  const [endTime, setEndTime] = useState<number>(0);
+  const [time, setTime] = useState<number>(0);
+
+  const isEnd = (!!endTime && endTime === time) || !cards.length;
 
   const handleClear = () => {
-    setCount(0);
     setEndTime(0);
     setTime(0);
+    setCards([...Array(54)].map((_, i) => i));
+    setSelectedCard(null);
     handleReset();
   };
 
-  const startTimer = () => {
-    if (endTime) return;
-    setEndTime(Date.now() + 5000);
-    setTime(Date.now());
+  const generateRandomCard = () => {
+    const randomCardIndex = Math.floor(Math.random() * cards.length);
+    const nextCard = cards[randomCardIndex];
+    return nextCard;
   };
 
-  const addCount = () => {
-    setCount(count + 1);
+  const handlePressCard = () => {
+    if (!endTime) {
+      setEndTime(Date.now() + 900000);
+      setTime(Date.now());
+    }
+    const randomCard = generateRandomCard() as number;
+    setCards((prevCards) => prevCards.filter((c) => c !== randomCard));
+    setSelectedCard(randomCard);
   };
 
   const padZero = (t: number) => {
     const stringNum = t.toString();
-    return stringNum.length === 1 ? '0' + stringNum : stringNum;
+    return ('0' + stringNum).slice(-2);
   };
 
-  const makeTime = (t: number) => {
+  const format = (t: number) => {
     let leftTime: number = t;
     const min = Math.floor(leftTime / 60000);
     leftTime = leftTime % 60000;
@@ -271,16 +285,19 @@ const Work = (props: WorkProps) => {
       <View style={styles.content}>
         <View style={styles.timer}>
           {!(endTime !== 0 && endTime - time === 0) && (
-            <Text style={styles.timer_text}>{endTime ? makeTime(endTime - time) : '15:00:00'}</Text>
+            <Text style={styles.timer_text}>{endTime ? format(endTime - time) : '15:00:00'}</Text>
           )}
         </View>
         <View style={styles.card_wrap}>
-          {endTime !== 0 && endTime - time === 0 ? (
-            <Text style={styles.result}>Fail</Text>
+          {isEnd ? (
+            <Text style={styles.result}>{cards.length ? 'Fail' : 'Success'}</Text>
           ) : (
             <>
-              <Card source={imageMap[CardType.back]} startTimer={startTimer} addCount={addCount} />
-              <Card source={imageMap[CardType.spade3]} />
+              <Card
+                source={cards.length && imageMap[CardType.back]}
+                handlePress={handlePressCard}
+              />
+              <Card source={selectedCard !== null && imageMap[selectedCard]} />
             </>
           )}
         </View>

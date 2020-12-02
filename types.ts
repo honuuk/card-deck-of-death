@@ -10,8 +10,7 @@ export interface WorkProps {
 
 export interface CardProps {
   source: any;
-  startTimer?: EventHandler;
-  addCount?: EventHandler;
+  handlePress?: EventHandler;
 }
 
 export enum CardType {
@@ -67,5 +66,7 @@ export enum CardType {
   heartsJ,
   heartsQ,
   heartsK,
+  jokerR,
+  jokerB,
   back,
 }
