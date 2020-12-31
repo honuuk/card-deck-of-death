@@ -219,31 +219,14 @@ const Work = (props: WorkProps) => {
   const [selectedCard, setSelectedCard] = useState<CardType | null>(null);
   const [endTime, setEndTime] = useState<number>(0);
   const [time, setTime] = useState<number>(0);
+  const [intervalId, setIntervalId] = useState<number>(0);
 
   const isEnd = (!!endTime && endTime === time) || !cards.length;
-
-  const handleClear = () => {
-    setEndTime(0);
-    setTime(0);
-    setCards([...Array(54)].map((_, i) => i));
-    setSelectedCard(null);
-    handleReset();
-  };
 
   const generateRandomCard = () => {
     const randomCardIndex = Math.floor(Math.random() * cards.length);
     const nextCard = cards[randomCardIndex];
     return nextCard;
-  };
-
-  const handlePressCard = () => {
-    if (!endTime) {
-      setEndTime(Date.now() + 900000);
-      setTime(Date.now());
-    }
-    const randomCard = generateRandomCard() as number;
-    setCards((prevCards) => prevCards.filter((c) => c !== randomCard));
-    setSelectedCard(randomCard);
   };
 
   const padZero = (t: number) => {
@@ -262,15 +245,43 @@ const Work = (props: WorkProps) => {
     return [min, sec, ms].map(padZero).join(':');
   };
 
-  useEffect(() => {
-    if (time !== 0) {
-      const timer = setInterval(() => {
-        setTime(Math.min(Date.now(), endTime));
-      }, 30);
-      return () => clearInterval(timer);
-    }
-  }, [time]);
+  const getDescription = (card: number) => {
+    const types = ['Squat', 'Squat', 'Left lunge', 'Right lunge'];
+    const typeIndex = Math.floor(card / 13);
+    const times = Math.min((card % 13) + 1, 11);
 
+    if (typeIndex === 4) return 'Squat 11 times';
+    return `${types[typeIndex]} ${times === 1 ? 11 : times} times`;
+  };
+
+  const handleClear = () => {
+    setEndTime(0);
+    setTime(0);
+    setCards([...Array(54)].map((_, i) => i));
+    setSelectedCard(null);
+    handleReset();
+    clearInterval(intervalId);
+  };
+
+  const handlePressCard = () => {
+    if (!endTime) {
+      const end = Date.now() + 900000;
+      setEndTime(end);
+      // setTime(Date.now());
+      setIntervalId(
+        setInterval(() => {
+          setTime(Math.min(Date.now(), end));
+        }, 30)
+      );
+    }
+    const randomCard = generateRandomCard() as number;
+    setCards((prevCards) => prevCards.filter((c) => c !== randomCard));
+    setSelectedCard(randomCard);
+  };
+
+  useEffect(() => {
+    if (!cards.length) clearInterval(intervalId);
+  }, [cards, intervalId]);
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -302,12 +313,14 @@ const Work = (props: WorkProps) => {
           )}
         </View>
         <View style={styles.action_name}>
-          {!(endTime !== 0 && endTime - time === 0) ? (
-            <Text style={styles.action_name_text}>Squat 3 times</Text>
-          ) : (
+          {isEnd ? (
             <TouchableOpacity style={styles.return_to_start} onPress={handleClear}>
               <Text style={styles.return_to_start_text}>return to start</Text>
             </TouchableOpacity>
+          ) : (
+            <Text style={styles.action_name_text}>
+              {selectedCard !== null && getDescription(selectedCard)}
+            </Text>
           )}
         </View>
       </View>
