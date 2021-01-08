@@ -4,13 +4,36 @@ export interface LandingProps {
   handleStart: EventHandler;
 }
 
-export interface WorkProps {
+export interface WorkContainerProps {
   handleReset: EventHandler;
+}
+
+export interface HeaderProps {
+  handleClear: EventHandler;
+}
+
+export interface TimerProps {
+  time: number;
+  endTime: number;
+}
+
+export interface CardsProps {
+  isEnd: boolean;
+  cards: number[];
+  imageMap: any;
+  selectedCard: CardType | null;
+  handlePressCard: EventHandler;
 }
 
 export interface CardProps {
   source: any;
   handlePress?: EventHandler;
+}
+
+export interface DescriptionProps {
+  isEnd: boolean;
+  selectedCard: CardType | null;
+  handleClear: EventHandler;
 }
 
 export enum CardType {

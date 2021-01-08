@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import Landing from './components/Landing';
-import Work from './components/Work';
+import Landing from './src/containers/LandingContainer';
+import Work from './src/containers/WorkContainer';
 import { EventHandler } from './types';
 
 export default function App() {

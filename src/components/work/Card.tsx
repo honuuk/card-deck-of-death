@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, StyleSheet, TouchableOpacity } from 'react-native';
 
-import { CardProps, CardType, EventHandler } from '../types';
+import { CardProps, CardType, EventHandler } from '../../../types';
 
 const styles = StyleSheet.create({
   container: {

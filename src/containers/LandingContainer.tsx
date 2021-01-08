@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Button } from 'react-native-elements';
 
-import { LandingProps } from '../types';
+import { LandingProps } from '../../types';
 
 const styles = StyleSheet.create({
   container: {
@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const Landing = (props: LandingProps) => {
+const LandingContainer = (props: LandingProps) => {
   const { handleStart } = props;
   return (
     <View style={styles.container}>
@@ -22,4 +22,4 @@ const Landing = (props: LandingProps) => {
   );
 };
 
-export default Landing;
+export default LandingContainer;
