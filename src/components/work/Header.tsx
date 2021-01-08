@@ -27,7 +27,7 @@ const Header = (props: HeaderProps) => {
       <TouchableOpacity style={styles.back_arrow} onPress={handleClear}>
         <Image
           style={styles.arrow_img}
-          source={require('../../../public/prev_arrow.png')}
+          source={require('../../../static/images/prev_arrow.png')}
           resizeMode='contain'
         />
       </TouchableOpacity>
