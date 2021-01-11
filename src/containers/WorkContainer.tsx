@@ -1,3 +1,4 @@
+import { Audio } from 'expo-av';
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
@@ -241,7 +242,9 @@ const WorkContainer = (props: WorkContainerProps) => {
     clearInterval(intervalId);
   };
 
-  const handlePressCard = () => {
+  const handlePressCard = async () => {
+    const { sound } = await Audio.Sound.createAsync(require('../../static/audio/button-click.wav'));
+    await sound.playAsync();
     if (!endTime) {
       const end = Date.now() + 900000;
       setEndTime(end);
