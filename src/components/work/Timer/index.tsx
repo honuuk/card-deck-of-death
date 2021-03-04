@@ -1,25 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 
-import { TimerProps } from '../../../types';
-
-const styles = StyleSheet.create({
-  timer: {
-    flex: 0.5,
-    width: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  timer_text: {
-    width: 235,
-    fontSize: 50,
-    color: '#1c4abd',
-    fontWeight: '800',
-    textShadowColor: '#cdcdcd',
-    textShadowOffset: { width: 4, height: 4 },
-    textShadowRadius: 0,
-  },
-});
+import { TimerProps } from '../../../../types';
+import S from './style';
 
 const Timer = (props: TimerProps) => {
   const { endTime, time } = props;
@@ -40,9 +23,9 @@ const Timer = (props: TimerProps) => {
     return [min, sec, ms].map(padZero).join(':');
   };
   return (
-    <View style={styles.timer}>
+    <View style={S.timer}>
       {!(endTime !== 0 && endTime - time === 0) && (
-        <Text style={styles.timer_text}>{endTime ? format(endTime - time) : '15:00:00'}</Text>
+        <Text style={S.timer_text}>{endTime ? format(endTime - time) : '15:00:00'}</Text>
       )}
     </View>
   );
