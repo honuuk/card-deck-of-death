@@ -1,3 +1,4 @@
+import { useFonts } from '@expo-google-fonts/inter';
 import { Audio } from 'expo-av';
 import React, { useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
@@ -56,6 +57,14 @@ const WorkContainer = (props: WorkContainerProps) => {
   useEffect(() => {
     if (!cards.length) clearInterval(intervalId);
   }, [cards, intervalId]);
+
+  const [fontsLoaded] = useFonts({
+    DotGothic16: require('../../../assets/fonts/DotGothic16-Regular.ttf'),
+  });
+
+  if (!fontsLoaded) {
+    return null;
+  }
 
   return (
     <View style={S.container}>
