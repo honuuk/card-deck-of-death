@@ -16,7 +16,7 @@ const Cards = (props: CardsProps) => {
       ) : (
         <>
           <Card source={cards.length && cardSourceMap[54]} handlePress={handlePressCard} />
-          <Card source={selectedCard && cardSourceMap[selectedCard]} />
+          <Card source={selectedCard !== null && cardSourceMap[selectedCard]} />
         </>
       )}
     </View>
