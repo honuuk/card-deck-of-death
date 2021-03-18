@@ -35,20 +35,28 @@ const WorkContainer = (props: WorkContainerProps) => {
     clearInterval(intervalId);
   };
 
-  const handlePressCard = async () => {
+  const playSound = async () => {
     const { sound } = await Audio.Sound.createAsync(
       require('../../../static/audio/button-click.wav')
     );
     await sound.playAsync();
-    if (!endTime) {
-      const end = Date.now() + 900000;
-      setEndTime(end);
-      setIntervalId(
-        setInterval(() => {
-          setTime(Math.min(Date.now(), end));
-        }, 30)
-      );
-    }
+  };
+
+  const startTimer = () => {
+    const end = Date.now() + 900000;
+    setEndTime(end);
+    setIntervalId(
+      setInterval(() => {
+        setTime(Math.min(Date.now(), end));
+      }, 30)
+    );
+  };
+
+  const handlePressCard = async () => {
+    await playSound();
+
+    if (!endTime) startTimer();
+
     const randomCard = generateRandomCard();
     setCards((prevCards) => prevCards.filter((c) => c !== randomCard));
     setSelectedCard(randomCard);
