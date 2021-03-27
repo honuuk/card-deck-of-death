@@ -1,25 +1,20 @@
-import React, { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import React from 'react';
 
 import Landing from './src/containers/LandingContainer';
 import Work from './src/containers/WorkContainer';
-import { EventHandler } from './types';
+import { RootStackParamList } from './types';
 
 export default function App() {
-  const [isStart, setIsStart] = useState(false);
-
-  const handleStart: EventHandler = () => setIsStart(true);
-  const handleReset: EventHandler = () => setIsStart(false);
+  const Stack = createStackNavigator<RootStackParamList>();
 
   return (
-    <View style={styles.container}>
-      {isStart ? <Work handleReset={handleReset} /> : <Landing handleStart={handleStart} />}
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName='Landing'>
+        <Stack.Screen name='Landing' component={Landing} />
+        <Stack.Screen name='Work' component={Work} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});

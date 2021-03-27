@@ -1,12 +1,19 @@
+import { StackNavigationProp } from '@react-navigation/stack';
+
 export type EventHandler = () => void;
 
-export interface LandingProps {
-  handleStart: EventHandler;
-}
+export type RootStackParamList = {
+  Landing: undefined;
+  Work: undefined;
+};
 
-export interface WorkContainerProps {
-  handleReset: EventHandler;
-}
+export type LandingContainerProps = {
+  navigation: StackNavigationProp<RootStackParamList, 'Landing'>;
+};
+
+export type WorkContainerProps = {
+  navigation: StackNavigationProp<RootStackParamList, 'Work'>;
+};
 
 export interface HeaderProps {
   handleClear: EventHandler;

@@ -11,7 +11,7 @@ import Timer from '../../components/work/Timer';
 import S from './style';
 
 const WorkContainer = (props: WorkContainerProps) => {
-  const { handleReset } = props;
+  const { navigation } = props;
   const [cards, setCards] = useState<number[]>([...Array(54)].map((_, i) => i));
   const [selectedCard, setSelectedCard] = useState<number | null>(null);
   const [endTime, setEndTime] = useState<number>(0);
@@ -31,7 +31,6 @@ const WorkContainer = (props: WorkContainerProps) => {
     setTime(0);
     setCards([...Array(54)].map((_, i) => i));
     setSelectedCard(null);
-    handleReset();
     clearInterval(intervalId);
   };
 
