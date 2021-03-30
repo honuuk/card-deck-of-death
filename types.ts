@@ -11,6 +11,11 @@ export type LandingContainerProps = {
   navigation: StackNavigationProp<RootStackParamList, 'Landing'>;
 };
 
+export type DescriptionModalProps = {
+  isModalOpen: boolean;
+  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
 export type WorkContainerProps = {
   navigation: StackNavigationProp<RootStackParamList, 'Work'>;
 };

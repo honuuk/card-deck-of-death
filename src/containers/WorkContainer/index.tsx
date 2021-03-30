@@ -1,7 +1,7 @@
 import { useFonts } from '@expo-google-fonts/inter';
 import { Audio } from 'expo-av';
 import React, { useEffect, useState } from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, Alert } from 'react-native';
 
 import { WorkContainerProps } from '../../../types';
 import Cards from '../../components/work/Cards';
@@ -32,6 +32,7 @@ const WorkContainer = (props: WorkContainerProps) => {
     setCards([...Array(54)].map((_, i) => i));
     setSelectedCard(null);
     clearInterval(intervalId);
+    navigation.goBack();
   };
 
   const playSound = async () => {
