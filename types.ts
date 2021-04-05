@@ -21,7 +21,7 @@ export type WorkContainerProps = {
 };
 
 export interface HeaderProps {
-  handleClear: EventHandler;
+  handleGoBack: EventHandler;
 }
 
 export interface TimerProps {
@@ -44,5 +44,5 @@ export interface CardProps {
 export interface DescriptionProps {
   isEnd: boolean;
   selectedCard: number | null;
-  handleClear: EventHandler;
+  handleGoBack: EventHandler;
 }

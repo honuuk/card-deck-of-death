@@ -5,7 +5,7 @@ import { DescriptionProps } from '../../../../types';
 import S from './style';
 
 const Description = (props: DescriptionProps) => {
-  const { isEnd, selectedCard, handleClear } = props;
+  const { isEnd, selectedCard, handleGoBack } = props;
 
   const getDescription = (card: number) => {
     const types = ['Squat', 'Squat', 'Left lunge', 'Right lunge'];
@@ -19,7 +19,7 @@ const Description = (props: DescriptionProps) => {
   return (
     <View style={S.action_name}>
       {isEnd ? (
-        <TouchableOpacity style={S.return_to_start} onPress={handleClear}>
+        <TouchableOpacity style={S.return_to_start} onPress={handleGoBack}>
           <Text style={S.return_to_start_text}>return to start</Text>
         </TouchableOpacity>
       ) : (
