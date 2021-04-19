@@ -31,9 +31,9 @@ const LandingContainer = (props: LandingContainerProps) => {
       </TouchableOpacity>
       <View style={S.TitleWrap}>
         {/* <Text style={S.gameTitleKo}>죽음의 카드덱</Text> */}
-        <Text style={S.gameTitleEn}>Card deck</Text>
-        <Text style={{ ...S.gameTitleEn, ...S.gameTitleOf }}>of</Text>
-        <Text style={{ ...S.gameTitleEn, ...S.gameTitleDeath }}>Death</Text>
+        <Text style={S.gameTitleEn}>Card 카드</Text>
+        {/* <Text style={{ ...S.gameTitleEn, ...S.gameTitleOf }}>of</Text> */}
+        <Text style={{ ...S.gameTitleEn, ...S.gameTitleDeath }}>Squat 스쿼트</Text>
       </View>
       <TouchableOpacity style={S.button} onPress={() => navigation.navigate('Work')}>
         <Text style={S.buttonTextgmd}>Play Now</Text>

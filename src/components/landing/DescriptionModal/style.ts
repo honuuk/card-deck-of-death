@@ -12,16 +12,58 @@ const styles = StyleSheet.create({
     width: '80%',
     height: '80%',
     backgroundColor: '#fff',
+    paddingHorizontal: 10,
+    paddingVertical: 10,
   },
-  modalViewClose: {
-    width: 30,
+  modalViewHeader: {
     height: 30,
-    position: 'absolute',
-    top: 20,
+    flexDirection: 'row-reverse',
+    marginTop: -10,
+  },
+  modalViewCloseButton: {
+    width: 30,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  modalViewCloseText: {
     color: '#000',
-    right: 20,
-    textAlign: 'center',
     fontSize: 28,
+  },
+  modalViewA: {
+    marginBottom: 20,
+  },
+  modalViewB: {
+    flex: 1,
+  },
+  workOutType: {
+    marginBottom: 20,
+  },
+  workOutCount: {},
+  disclaimerWork: {
+    fontSize: 16,
+    textAlign: 'center',
+  },
+  disclaimerWorkTitle: {
+    fontSize: 18,
+    color: '#1CD8D2',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  modalViewC: {
+    flex: 1,
+    flexDirection: 'row',
+  },
+  example: {
+    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  exampleImage: {
+    flex: 1,
+    resizeMode: 'contain',
+  },
+  exampleText: {
+    height: 20,
   },
 });
 
