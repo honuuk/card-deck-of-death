@@ -8,7 +8,7 @@ const Description = (props: DescriptionProps) => {
   const { isEnd, selectedCard, handleGoBack } = props;
 
   const getDescription = (card: number) => {
-    const types = ['Left lunge', 'Squat', 'Left Squat', 'Right lunge'];
+    const types = ['Left lunge', 'Squat', 'Squat', 'Right lunge'];
     const typeIndex = Math.floor(card / 13);
     const times = Math.min((card % 13) + 1, 11);
 
