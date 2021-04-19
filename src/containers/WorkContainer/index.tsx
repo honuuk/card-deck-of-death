@@ -36,7 +36,6 @@ const WorkContainer = (props: WorkContainerProps) => {
 
   const handleGoBack = () => {
     navigation.goBack();
-    console.log('go back');
   };
 
   const playSound = async () => {
@@ -69,7 +68,6 @@ const WorkContainer = (props: WorkContainerProps) => {
   useEffect(
     () =>
       navigation.addListener('beforeRemove', (e) => {
-        console.log(endTime, isEnd);
         if (!endTime || isEnd) {
           // If we don't have unsaved changes, then we don't need to do anything
           return;
