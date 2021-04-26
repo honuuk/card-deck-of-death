@@ -1,9 +1,10 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 
 import { CardsProps } from '../../../../types';
 import cardSourceMap from '../../../utils/cardSourceMap';
 import Card from '../Card';
+import Result from '../Result';
 import S from './style';
 
 const Cards = (props: CardsProps) => {
@@ -12,7 +13,7 @@ const Cards = (props: CardsProps) => {
   return (
     <View style={S.card_wrap}>
       {isEnd ? (
-        <Text style={S.result}>{cards.length ? 'Fail' : 'Success'}</Text>
+        <Result type={cards.length ? 'Fail' : 'Success'} />
       ) : (
         <>
           <Card source={cards.length && cardSourceMap[54]} handlePress={handlePressCard} />

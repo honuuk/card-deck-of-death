@@ -46,3 +46,7 @@ export interface DescriptionProps {
   selectedCard: number | null;
   handleGoBack: EventHandler;
 }
+
+export interface ResultProps {
+  type: 'Success' | 'Fail';
+}
