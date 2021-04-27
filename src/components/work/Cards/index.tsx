@@ -8,12 +8,12 @@ import Result from '../Result';
 import S from './style';
 
 const Cards = (props: CardsProps) => {
-  const { isEnd, cards, selectedCard, handlePressCard } = props;
+  const { isEnd, cards, selectedCard, navigation, handlePressCard } = props;
 
   return (
     <View style={S.card_wrap}>
       {isEnd ? (
-        <Result type={cards.length ? 'Fail' : 'Success'} />
+        <Result navigation={navigation} type={cards.length ? 'Fail' : 'Success'} />
       ) : (
         <>
           <Card source={cards.length && cardSourceMap[54]} handlePress={handlePressCard} />

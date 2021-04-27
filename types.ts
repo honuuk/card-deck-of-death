@@ -5,6 +5,7 @@ export type EventHandler = () => void;
 export type RootStackParamList = {
   Landing: undefined;
   Work: undefined;
+  Record: undefined;
 };
 
 export type LandingContainerProps = {
@@ -33,6 +34,7 @@ export interface CardsProps {
   isEnd: boolean;
   cards: number[];
   selectedCard: number | null;
+  navigation: StackNavigationProp<RootStackParamList, 'Work'>;
   handlePressCard: EventHandler;
 }
 
@@ -49,4 +51,5 @@ export interface DescriptionProps {
 
 export interface ResultProps {
   type: 'Success' | 'Fail';
+  navigation: StackNavigationProp<RootStackParamList, 'Work'>;
 }

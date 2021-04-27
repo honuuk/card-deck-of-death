@@ -35,7 +35,7 @@ const LandingContainer = (props: LandingContainerProps) => {
         {/* <Text style={{ ...S.gameTitleEn, ...S.gameTitleOf }}>of</Text> */}
         <Text style={{ ...S.gameTitleEn, ...S.gameTitleDeath }}>Squat 스쿼트</Text>
       </View>
-      <TouchableOpacity style={S.button} onPress={() => navigation.navigate('Work')}>
+      <TouchableOpacity style={S.button} onPress={() => navigation.navigate('Record')}>
         <Text style={S.buttonTextgmd}>Play Now</Text>
       </TouchableOpacity>
     </View>

@@ -115,6 +115,7 @@ const WorkContainer = (props: WorkContainerProps) => {
           isEnd={isEnd}
           selectedCard={selectedCard}
           handlePressCard={handlePressCard}
+          navigation={navigation}
         />
         <Description isEnd={isEnd} selectedCard={selectedCard} handleGoBack={handleGoBack} />
       </View>
