@@ -1,17 +1,13 @@
 import { StyleSheet } from 'react-native';
 
+import CalendarComponent from '.';
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  header: {
+  recordText: {
     flex: 1,
-  },
-  contents: {
-    flex: 5,
-  },
-  ad: {
-    height: 70,
   },
 });
 

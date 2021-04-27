@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
+import CalendarComponent from '../../components/record/Calendar';
 import S from './style';
 
 const RecordContainer = () => {
@@ -10,7 +11,7 @@ const RecordContainer = () => {
         <Text>header</Text>
       </View>
       <View style={S.contents}>
-        <Text>contents</Text>
+        <CalendarComponent />
       </View>
       <View style={S.ad}>
         <Text>ad</Text>
