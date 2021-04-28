@@ -53,3 +53,10 @@ export interface ResultProps {
   type: 'Success' | 'Fail';
   navigation: StackNavigationProp<RootStackParamList, 'Work'>;
 }
+
+export interface Record {
+  date: string;
+  result: 'Success' | 'Fail';
+  remainTime: string;
+  remainCard: number;
+}
