@@ -26,7 +26,7 @@ const CalendarComponent = () => {
 
   const renderResult = (record: Record) => {
     const { result, remainTime, remainCard } = record;
-    if (!result) return '';
+    if (!result) return null;
 
     return (
       <>
