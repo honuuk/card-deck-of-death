@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Text, View } from 'react-native';
 import { CalendarList, DateObject } from 'react-native-calendars';
 
 import { Record } from '../../../../types';
 import S from './style';
+import db from '../../../db';
 
 const CalendarComponent = () => {
   const [selectedRecord, setSelectedRecord] = useState<Record>({} as Record);
@@ -36,6 +37,20 @@ const CalendarComponent = () => {
       </>
     );
   };
+
+  const fetchData = async () => {
+    try {
+      const docRef = db.collection('records').doc('IqgMU6li2kiVzcgfqKdu');
+      const data = await docRef.get();
+      if (data.exists) console.log(data.data());
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <View style={S.container}>
