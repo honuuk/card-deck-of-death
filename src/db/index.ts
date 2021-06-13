@@ -1,6 +1,6 @@
+import { API_KEY, AUTH_DOMAIN, DATABASE_URL, PROJECT_ID, MESSAGING_SENDER_ID, APP_ID } from '@env';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
-import { API_KEY, AUTH_DOMAIN, DATABASE_URL, PROJECT_ID, MESSAGING_SENDER_ID, APP_ID } from '@env';
 
 const firebaseConfig = {
   apiKey: API_KEY,

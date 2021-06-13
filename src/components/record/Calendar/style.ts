@@ -8,10 +8,17 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#1CD8D2',
+    marginBottom: 10,
   },
   recordText: {
+    fontFamily: 'NotoSansKR-Bold',
     fontSize: 20,
-    fontWeight: '600',
+    color: '#fff',
+  },
+  recordTextWrap: {
+    flex: 1,
+    justifyContent: 'center',
   },
 });
 

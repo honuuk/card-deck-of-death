@@ -1,6 +1,7 @@
 import { useFonts } from '@expo-google-fonts/inter';
 import React, { useState } from 'react';
 import { Alert, Modal, Text, TouchableOpacity, View } from 'react-native';
+import * as Animatable from 'react-native-animatable';
 
 import { LandingContainerProps } from '../../../types';
 import DescriptionModal from '../../components/landing/DescriptionModal';
@@ -25,17 +26,31 @@ const LandingContainer = (props: LandingContainerProps) => {
 
   return (
     <View style={S.container}>
-      <DescriptionModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+      <DescriptionModal
+        isModalOpen={isModalOpen}
+        setIsModalOpen={setIsModalOpen}
+        fontLoaded={fontsLoaded}
+      />
       <TouchableOpacity style={S.howToIconWrap} onPress={() => setIsModalOpen(true)}>
         <Text style={S.howToIcon}>?</Text>
       </TouchableOpacity>
       <View style={S.TitleWrap}>
         {/* <Text style={S.gameTitleKo}>죽음의 카드덱</Text> */}
-        <Text style={S.gameTitleEn}>Card 카드</Text>
+        <Animatable.Text
+          style={S.gameTitleEn}
+          animation='slideInDown'
+          iterationCount={5}
+          direction='alternate'>
+          Card
+        </Animatable.Text>
+        {/* <Text style={S.gameTitleEn}>Card</Text> */}
         {/* <Text style={{ ...S.gameTitleEn, ...S.gameTitleOf }}>of</Text> */}
-        <Text style={{ ...S.gameTitleEn, ...S.gameTitleDeath }}>Squat 스쿼트</Text>
+        <Animatable.Text style={{ ...S.gameTitleEn, ...S.gameTitleDeath }} animation='bounceIn'>
+          Squat
+        </Animatable.Text>
+        {/* <Text style={{ ...S.gameTitleEn, ...S.gameTitleDeath }}>Squat</Text> */}
       </View>
-      <TouchableOpacity style={S.button} onPress={() => navigation.navigate('Record')}>
+      <TouchableOpacity style={S.button} onPress={() => navigation.navigate('Work')}>
         <Text style={S.buttonTextgmd}>Play Now</Text>
       </TouchableOpacity>
     </View>

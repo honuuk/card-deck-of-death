@@ -15,6 +15,7 @@ export type LandingContainerProps = {
 export type DescriptionModalProps = {
   isModalOpen: boolean;
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  fontLoaded: boolean;
 };
 
 export type WorkContainerProps = {

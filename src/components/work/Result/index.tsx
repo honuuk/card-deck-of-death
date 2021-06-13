@@ -15,7 +15,7 @@ const Result = ({ type, navigation }: ResultProps) => {
   return (
     <View style={S.resultWrap}>
       <Animatable.Text
-        style={{ ...S.result, color: type === 'Success' ? 'red' : 'blue' }}
+        style={{ ...S.result, color: type === 'Success' ? '#1CD8D2' : '#FF0000' }}
         animation='bounceIn'>
         {type}
       </Animatable.Text>

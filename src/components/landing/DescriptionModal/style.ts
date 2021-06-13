@@ -12,42 +12,50 @@ const styles = StyleSheet.create({
     width: '80%',
     height: '80%',
     backgroundColor: '#fff',
-    paddingHorizontal: 10,
+    borderColor: '#1CD8D2',
+    borderWidth: 1.5,
+  },
+  modalViewWrap: {
+    paddingHorizontal: 15,
     paddingVertical: 10,
+    flex: 1,
   },
   modalViewHeader: {
     height: 30,
     flexDirection: 'row-reverse',
-    marginTop: -10,
+    marginBottom: -20,
   },
   modalViewCloseButton: {
-    width: 30,
+    width: 40,
+    height: 40,
     alignItems: 'center',
     justifyContent: 'center',
   },
   modalViewCloseText: {
     color: '#000',
-    fontSize: 28,
+    fontSize: 24,
+    fontFamily: 'NotoSansKR-Light',
   },
   modalViewA: {
     marginBottom: 20,
   },
-  modalViewB: {
-    flex: 1,
-  },
   workOutType: {
     marginBottom: 20,
   },
-  workOutCount: {},
   disclaimerWork: {
     fontSize: 16,
-    textAlign: 'center',
   },
   disclaimerWorkTitle: {
-    fontSize: 18,
+    fontFamily: 'NotoSansKR-Black',
+    fontSize: 16,
     color: '#1CD8D2',
     fontWeight: 'bold',
-    textAlign: 'center',
+    marginBottom: 8,
+    marginTop: 16,
+  },
+  disclaimerWorkText: {
+    fontFamily: 'NotoSansKR-Regular',
+    fontSize: 12,
   },
   modalViewC: {
     flex: 1,
@@ -63,7 +71,16 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   exampleText: {
+    fontFamily: 'NotoSansKR-Medium',
     height: 20,
+    color: '#6e6e6e',
+  },
+  disclaimerJoker: {
+    fontFamily: 'NotoSansKR-Regular',
+    textAlign: 'right',
+    fontSize: 12,
+    marginTop: 10,
+    color: '#828282',
   },
 });
 

@@ -3,8 +3,8 @@ import { Text, View } from 'react-native';
 import { CalendarList, DateObject } from 'react-native-calendars';
 
 import { Record } from '../../../../types';
-import S from './style';
 import db from '../../../db';
+import S from './style';
 
 const CalendarComponent = () => {
   const [selectedRecord, setSelectedRecord] = useState<Record>({} as Record);
@@ -16,7 +16,12 @@ const CalendarComponent = () => {
   const markedDates = records.reduce(
     (acc, record) => ({
       ...acc,
-      [record.date]: { marked: true, dotColor: record.result === 'Success' ? 'red' : 'blue' },
+      [record.date]: {
+        marked: true,
+        selected: true,
+        selectedColor: 'grey',
+        dotColor: record.result === 'Success' ? '#1CD8D2' : '#FF0000',
+      },
     }),
     {}
   );
@@ -30,11 +35,11 @@ const CalendarComponent = () => {
     if (!result) return null;
 
     return (
-      <>
+      <View style={S.recordTextWrap}>
         <Text style={S.recordText}>결과: {result}</Text>
         <Text style={S.recordText}>남은 시간: {remainTime}</Text>
         <Text style={S.recordText}>남은 카드: {remainCard}</Text>
-      </>
+      </View>
     );
   };
 
