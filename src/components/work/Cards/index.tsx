@@ -13,7 +13,7 @@ const Cards = (props: CardsProps) => {
   return (
     <View style={S.card_wrap}>
       {isEnd ? (
-        <Result navigation={navigation} type={cards.length ? 'Fail' : 'Success'} />
+        <Result navigation={navigation} type={cards.length === 0 ? 'Success' : 'Fail'} />
       ) : (
         <>
           <Card source={cards.length && cardSourceMap[54]} handlePress={handlePressCard} />
