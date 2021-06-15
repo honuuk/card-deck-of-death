@@ -12,13 +12,13 @@ import S from './style';
 
 const WorkContainer = (props: WorkContainerProps) => {
   const { navigation } = props;
-  const [cards, setCards] = useState<number[]>([...Array(54)].map((_, i) => i));
+  const [cards, setCards] = useState<number[]>([...Array(54)].map((_, index) => index));
   const [selectedCard, setSelectedCard] = useState<number | null>(null);
   const [endTime, setEndTime] = useState<number>(0);
   const [time, setTime] = useState<number>(0);
-  const [intervalId, setIntervalId] = useState<number>(0);
+  const [intervalId, setIntervalId] = useState<NodeJS.Timeout>();
 
-  const isEnd = (!!endTime && endTime === time) || !cards.length;
+  const isEnd = (!!endTime && endTime === time) || cards.length === 0;
 
   const generateRandomCard = () => {
     const randomCardIndex = Math.floor(Math.random() * cards.length);
@@ -29,9 +29,9 @@ const WorkContainer = (props: WorkContainerProps) => {
   const handleClear = () => {
     setEndTime(0);
     setTime(0);
-    setCards([...Array(54)].map((_, i) => i));
+    setCards([...Array(54)].map((_, index) => index));
     setSelectedCard(null);
-    clearInterval(intervalId);
+    clearInterval(intervalId as NodeJS.Timeout);
   };
 
   const handleGoBack = () => {
@@ -66,39 +66,19 @@ const WorkContainer = (props: WorkContainerProps) => {
   };
 
   useEffect(() => {
-    if (isEnd && endTime) clearInterval(intervalId);
-    navigation.addListener('beforeRemove', (e) => {
-      if (!endTime || isEnd) {
-        // If we don't have unsaved changes, then we don't need to do anything
-        return;
-      }
-
-      // Prevent default behavior of leaving the screen
-      e.preventDefault();
-
-      // Prompt the user before leaving the screen
-      Alert.alert(
-        'Discard changes?',
-        'You have unsaved changes. Are you sure to discard them and leave the screen?',
-        [
-          { text: "Don't leave", style: 'cancel', onPress: () => {} },
-          {
-            text: 'Discard',
-            style: 'destructive',
-            // If the user confirmed, then we dispatch the action we blocked earlier
-            // This will continue the action that had triggered the removal of the screen
-            onPress: () => {
-              handleClear();
-              navigation.dispatch(e.data.action);
-            },
-          },
-        ]
-      );
+    if (isEnd) clearInterval(intervalId as NodeJS.Timeout);
+    navigation.addListener('beforeRemove', () => {
+      handleClear();
     });
-  }, [navigation, isEnd, endTime]);
+  }, [isEnd]);
 
   const [fontsLoaded] = useFonts({
-    DotGothic16: require('../../../assets/fonts/DotGothic16-Regular.ttf'),
+    'NotoSansKR-Black': require('../../../assets/fonts/NotoSansKR-Black.otf'),
+    'NotoSansKR-Bold': require('../../../assets/fonts/NotoSansKR-Bold.otf'),
+    'NotoSansKR-Light': require('../../../assets/fonts/NotoSansKR-Light.otf'),
+    'NotoSansKR-Medium': require('../../../assets/fonts/NotoSansKR-Medium.otf'),
+    'NotoSansKR-Regular': require('../../../assets/fonts/NotoSansKR-Regular.otf'),
+    'NotoSansKR-Thin': require('../../../assets/fonts/NotoSansKR-Thin.otf'),
   });
 
   if (!fontsLoaded) {

@@ -12,6 +12,7 @@ const Result = ({ type, navigation }: ResultProps) => {
     }, 1000);
     return () => clearTimeout(timeout);
   });
+
   return (
     <View style={S.resultWrap}>
       <Animatable.Text
