@@ -1,13 +1,16 @@
 import { useFonts } from '@expo-google-fonts/inter';
+import * as Application from 'expo-application';
 import { Audio } from 'expo-av';
 import React, { useEffect, useState } from 'react';
-import { Text, View, Alert } from 'react-native';
+import { Text, View } from 'react-native';
 
 import { WorkContainerProps } from '../../../types';
 import Cards from '../../components/work/Cards';
 import Description from '../../components/work/Description';
 import Header from '../../components/work/Header';
 import Timer from '../../components/work/Timer';
+import db from '../../db';
+import { formatTime, getToday } from '../../utils/date';
 import S from './style';
 
 const WorkContainer = (props: WorkContainerProps) => {
@@ -65,8 +68,34 @@ const WorkContainer = (props: WorkContainerProps) => {
     setSelectedCard(randomCard);
   };
 
+  const getDeviceUniqueId = async () => {
+    const androidId = Application.androidId;
+    if (androidId) return androidId;
+
+    const iosId = await Application.getIosIdForVendorAsync();
+    return iosId || '';
+  };
+
+  const getRecordData = () => {
+    const today = getToday();
+    const result = cards.length === 0 ? 'Success' : 'Fail';
+    const remainTime = formatTime(endTime - time);
+    const remainCard = cards.length;
+    return { [today]: { result, remainCard, remainTime } };
+  };
+
+  const saveRecord = async () => {
+    const deviceUniqueId = await getDeviceUniqueId();
+    const data = getRecordData();
+    const docRef = db.collection('records').doc(deviceUniqueId);
+    await docRef.set(data);
+  };
+
   useEffect(() => {
-    if (isEnd) clearInterval(intervalId as NodeJS.Timeout);
+    if (isEnd) {
+      clearInterval(intervalId as NodeJS.Timeout);
+      saveRecord();
+    }
     navigation.addListener('beforeRemove', () => {
       handleClear();
     });
