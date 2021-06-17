@@ -19,7 +19,7 @@ const WorkContainer = (props: WorkContainerProps) => {
   const [selectedCard, setSelectedCard] = useState<number | null>(null);
   const [endTime, setEndTime] = useState<number>(0);
   const [time, setTime] = useState<number>(0);
-  const [intervalId, setIntervalId] = useState<NodeJS.Timeout>();
+  const [intervalId, setIntervalId] = useState<NodeJS.Timeout | number>();
 
   const isEnd = (!!endTime && endTime === time) || cards.length === 0;
 
