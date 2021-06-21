@@ -8,7 +8,7 @@ export const getToday = () => {
   return `${year}-${month}-${day}`;
 };
 
-export const formatTime = (t: number) => {
+export const formatTime = (t: number): string => {
   let leftTime: number = t;
   const min = Math.floor(leftTime / 60000);
   leftTime = leftTime % 60000;
@@ -17,4 +17,9 @@ export const formatTime = (t: number) => {
   const ms = Math.floor(leftTime / 10);
 
   return [min, sec, ms].map(padZero).join(':');
+};
+
+export const timeToInteger = (time: string): number => {
+  const [min, sec, ms] = time.split(':').map(parseInt);
+  return ms * 10 + sec * 1000 + min * 60000;
 };

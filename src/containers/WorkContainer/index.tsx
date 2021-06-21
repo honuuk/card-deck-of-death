@@ -1,16 +1,15 @@
 import { useFonts } from '@expo-google-fonts/inter';
-import * as Application from 'expo-application';
 import { Audio } from 'expo-av';
 import React, { useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
 
-import { WorkContainerProps } from '../../../types';
+import { Record, WorkContainerProps } from '../../../types';
 import Cards from '../../components/work/Cards';
 import Description from '../../components/work/Description';
 import Header from '../../components/work/Header';
 import Timer from '../../components/work/Timer';
-import db from '../../db';
-import { formatTime, getToday } from '../../utils/date';
+import { formatTime, getToday, timeToInteger } from '../../utils/date';
+import { getDeviceCollection } from '../../utils/device';
 import S from './style';
 
 const WorkContainer = (props: WorkContainerProps) => {
@@ -68,33 +67,34 @@ const WorkContainer = (props: WorkContainerProps) => {
     setSelectedCard(randomCard);
   };
 
-  const getDeviceUniqueId = async () => {
-    const androidId = Application.androidId;
-    if (androidId) return androidId;
-
-    const iosId = await Application.getIosIdForVendorAsync();
-    return iosId || '';
-  };
-
-  const getRecordData = () => {
-    const today = getToday();
+  const makeRecord = (): Record => {
     const result = cards.length === 0 ? 'Success' : 'Fail';
     const remainTime = formatTime(endTime - time);
     const remainCard = cards.length;
-    return { [today]: { result, remainCard, remainTime } };
+    return { result, remainCard, remainTime };
   };
 
-  const saveRecord = async () => {
-    const deviceUniqueId = await getDeviceUniqueId();
-    const data = getRecordData();
-    const docRef = db.collection('records').doc(deviceUniqueId);
-    await docRef.set(data);
+  const compareData = (a: Record, b: Record): Record => {
+    if (a.result !== b.result) return a.result === 'Success' ? a : b;
+    if (a.result === 'Success')
+      return timeToInteger(a.remainTime) < timeToInteger(b.remainTime) ? a : b;
+    return a.remainCard < b.remainCard ? a : b;
+  };
+
+  const checkRecordAndSave = async () => {
+    const deviceCollection = await getDeviceCollection();
+    const today = getToday();
+    const docRef = deviceCollection.doc(today);
+    const dbData = (await docRef.get()).data();
+    const record = makeRecord();
+    const newRecord = dbData ? compareData(record, dbData as Record) : record;
+    await docRef.set(newRecord);
   };
 
   useEffect(() => {
     if (isEnd) {
       clearInterval(intervalId as NodeJS.Timeout);
-      saveRecord();
+      checkRecordAndSave();
     }
     navigation.addListener('beforeRemove', () => {
       handleClear();
