@@ -20,6 +20,6 @@ export const formatTime = (t: number): string => {
 };
 
 export const timeToInteger = (time: string): number => {
-  const [min, sec, ms] = time.split(':').map(parseInt);
+  const [min, sec, ms] = time.split(':').map((t) => parseInt(t, 10));
   return ms * 10 + sec * 1000 + min * 60000;
 };

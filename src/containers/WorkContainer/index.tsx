@@ -77,7 +77,7 @@ const WorkContainer = (props: WorkContainerProps) => {
   const compareData = (a: Record, b: Record): Record => {
     if (a.result !== b.result) return a.result === 'Success' ? a : b;
     if (a.result === 'Success')
-      return timeToInteger(a.remainTime) < timeToInteger(b.remainTime) ? a : b;
+      return timeToInteger(a.remainTime) > timeToInteger(b.remainTime) ? a : b;
     return a.remainCard < b.remainCard ? a : b;
   };
 
