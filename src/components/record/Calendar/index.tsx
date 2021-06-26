@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View } from 'react-native';
-import { CalendarList, DateObject } from 'react-native-calendars';
+import { Calendar, DateObject } from 'react-native-calendars';
 
 import { Record } from '../../../../types';
+import { getToday } from '../../../utils/date';
 import { getDeviceCollection } from '../../../utils/device';
 import S from './style';
+
+const colorMap = {
+  Success: '#1CD8D2',
+  Fail: '#FF0000',
+};
 
 const CalendarComponent = () => {
   const [selectedRecord, setSelectedRecord] = useState<Record>({} as Record);
@@ -17,8 +23,8 @@ const CalendarComponent = () => {
         [record.date as string]: {
           marked: true,
           selected: selectedRecord.date === record.date,
-          selectedColor: selectedRecord.result === 'Success' ? '#1CD8D2' : '#FF0000',
-          dotColor: record.result === 'Success' ? '#1CD8D2' : '#FF0000',
+          selectedColor: colorMap[record.result],
+          dotColor: colorMap[record.result],
         },
       }),
       {}
@@ -47,6 +53,8 @@ const CalendarComponent = () => {
       const deviceCollection = await getDeviceCollection();
       const snapshot = await deviceCollection.get();
       const data = snapshot.docs.map((doc) => ({ ...(doc.data() as Record), date: doc.id }));
+      const todayRecord = data.find((record) => record.date === getToday());
+      if (todayRecord) setSelectedRecord(todayRecord);
       setRecords(data);
     } catch (e) {
       console.log(e);
@@ -59,16 +67,11 @@ const CalendarComponent = () => {
 
   return (
     <View style={S.container}>
-      <CalendarList
-        horizontal
-        pagingEnabled
-        markedDates={makeMarkedDates(records)}
-        onDayPress={handleDatePress}
-      />
+      <Calendar markedDates={makeMarkedDates(records)} onDayPress={handleDatePress} />
       <View
         style={{
           ...S.record,
-          backgroundColor: selectedRecord.result === 'Success' ? '#1CD8D2' : '#FF0000',
+          backgroundColor: colorMap[selectedRecord.result],
         }}>
         {renderResult(selectedRecord)}
       </View>
