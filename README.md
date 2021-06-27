@@ -13,8 +13,8 @@
 - Clone the repository
 
 ```sh
-git clone https://github.com/jewook3617/card-deck-of-pain.git
-cd card-deck-of-pain
+git clone https://github.com/jewook3617/card-deck-of-death.git
+cd card-deck-of-death
 ```
 
 - Install expo cli
