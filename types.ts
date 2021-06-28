@@ -29,6 +29,7 @@ export interface HeaderProps {
 export interface TimerProps {
   time: number;
   endTime: number;
+  isEnd: boolean;
 }
 
 export interface CardsProps {
@@ -48,6 +49,10 @@ export interface DescriptionProps {
   isEnd: boolean;
   selectedCard: number | null;
   handleGoBack: EventHandler;
+}
+
+export interface RecordContainerProps {
+  navigation: StackNavigationProp<RootStackParamList, 'Record'>;
 }
 
 export interface ResultProps {
