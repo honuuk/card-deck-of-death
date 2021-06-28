@@ -34,11 +34,7 @@ const LandingContainer = (props: LandingContainerProps) => {
         <Text style={S.howToIcon}>?</Text>
       </TouchableOpacity>
       <View style={S.TitleWrap}>
-        <Animatable.Text
-          style={S.gameTitleEn}
-          animation='slideInDown'
-          iterationCount={5}
-          direction='alternate'>
+        <Animatable.Text style={S.gameTitleEn} animation='bounceIn'>
           Card
         </Animatable.Text>
         <Animatable.Text style={{ ...S.gameTitleEn, ...S.gameTitleDeath }} animation='bounceIn'>

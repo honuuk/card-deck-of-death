@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
   action_name_text: {
     fontSize: 50,
     fontWeight: '800',
-    color: '#ff802b',
+    color: '#1CD8D2',
     textAlign: 'center',
     textShadowColor: '#1c4abd',
     textShadowOffset: { width: 3, height: 3 },

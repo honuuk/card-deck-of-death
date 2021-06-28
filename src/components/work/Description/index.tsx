@@ -7,25 +7,29 @@ import S from './style';
 const Description = (props: DescriptionProps) => {
   const { isEnd, selectedCard, handleGoBack } = props;
 
-  const getDescription = (card: number) => {
+  const getType = (card: number) => {
     const types = ['Left lunge', 'Squat', 'Squat', 'Right lunge'];
+    const typeIndex = Math.floor(card / 13);
+
+    if (typeIndex === 4) return 'Squat';
+    return types[typeIndex];
+  };
+
+  const getTimes = (card: number) => {
     const typeIndex = Math.floor(card / 13);
     const times = Math.min((card % 13) + 1, 11);
 
-    if (typeIndex === 4) return 'Squat 11 times';
-    return `${types[typeIndex]} ${times === 1 ? 11 : times} times`;
+    if (typeIndex === 4) return '11 times';
+    return `${times === 1 ? 11 : times} times`;
   };
 
   return (
     <View style={S.action_name}>
-      {isEnd ? (
-        <TouchableOpacity style={S.return_to_start} onPress={handleGoBack}>
-          <Text style={S.return_to_start_text}>return to start</Text>
-        </TouchableOpacity>
-      ) : (
-        <Text style={S.action_name_text}>
-          {selectedCard !== null && getDescription(selectedCard)}
-        </Text>
+      {!isEnd && (
+        <>
+          <Text style={S.action_name_text}>{selectedCard !== null && getType(selectedCard)}</Text>
+          <Text style={S.action_name_text}>{selectedCard !== null && getTimes(selectedCard)}</Text>
+        </>
       )}
     </View>
   );

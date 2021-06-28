@@ -12,8 +12,6 @@ const styles = StyleSheet.create({
     width: '80%',
     height: '80%',
     backgroundColor: '#fff',
-    borderColor: '#1CD8D2',
-    borderWidth: 1.5,
   },
   modalViewWrap: {
     paddingHorizontal: 15,

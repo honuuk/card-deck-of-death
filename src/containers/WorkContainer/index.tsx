@@ -118,7 +118,7 @@ const WorkContainer = (props: WorkContainerProps) => {
     <View style={S.container}>
       <Header handleGoBack={handleGoBack} />
       <View style={S.content}>
-        <Timer time={time} endTime={endTime} />
+        <Timer isEnd={isEnd} time={time} endTime={endTime} />
         <Cards
           cards={cards}
           isEnd={isEnd}

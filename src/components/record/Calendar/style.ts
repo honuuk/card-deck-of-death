@@ -11,10 +11,21 @@ const styles = StyleSheet.create({
     backgroundColor: '#1CD8D2',
     marginBottom: 10,
   },
+  recordTextHeader: {
+    fontFamily: 'NotoSansKR-Bold',
+    fontSize: 25,
+    color: '#fff',
+    marginBottom: 8,
+  },
   recordText: {
     fontFamily: 'NotoSansKR-Bold',
     fontSize: 20,
     color: '#fff',
+  },
+  recordValue: {
+    fontFamily: 'NotoSansKR-Bold',
+    fontSize: 20,
+    color: '#000',
   },
   recordTextWrap: {
     flex: 1,

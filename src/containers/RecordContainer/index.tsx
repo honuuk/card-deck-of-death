@@ -2,10 +2,12 @@ import { useFonts } from '@expo-google-fonts/inter';
 import React from 'react';
 import { Text, View } from 'react-native';
 
+import { RecordContainerProps } from '../../../types';
 import CalendarComponent from '../../components/record/Calendar';
+import Header from '../../components/work/Header';
 import S from './style';
 
-const RecordContainer = () => {
+const RecordContainer = ({ navigation }: RecordContainerProps) => {
   const [fontsLoaded] = useFonts({
     'NotoSansKR-Black': require('../../../assets/fonts/NotoSansKR-Black.otf'),
     'NotoSansKR-Bold': require('../../../assets/fonts/NotoSansKR-Bold.otf'),
@@ -19,11 +21,13 @@ const RecordContainer = () => {
     return null;
   }
 
+  const handleGoBack = () => {
+    navigation.goBack();
+  };
+
   return (
     <View style={S.container}>
-      <View style={S.header}>
-        <Text>header</Text>
-      </View>
+      <Header handleGoBack={handleGoBack} />
       <View style={S.contents}>
         <CalendarComponent />
       </View>
