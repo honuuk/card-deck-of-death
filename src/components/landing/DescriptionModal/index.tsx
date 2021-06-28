@@ -27,19 +27,20 @@ const DescriptionModal = (props: DescriptionModalProps) => {
           </View>
           <View style={S.modalViewWrap}>
             <View style={S.modalViewA}>
-              <Text style={S.disclaimerWorkTitle}>카드 스쿼트란?</Text>
+              <Text style={S.disclaimerWorkTitle}>What is Card Squat?</Text>
               <Text style={S.disclaimerWorkText}>
-                이 운동법은 미국 교도소에서 운동기구 없이 효과적으로 하체운동을 하기 위해 고안된
-                방법입니다.{'\n'}카드를 뒤집어 카드의 모양과 숫자에 맞게 운동을 실시하면 됩니다.
+                This exercise method was designed to effectively exercise the lower body without
+                exercise equipment in American prisons. Here's how. Flip the card over and perform
+                the exercise according to the card's shape and number.
               </Text>
-              <Text style={S.disclaimerWorkTitle}>♥ ◇ ♤ ♧는 운동종류를 의미합니다.</Text>
+              <Text style={S.disclaimerWorkTitle}>♥ ◇ ♤ ♧ means exercise type.</Text>
               <Text style={S.disclaimerWorkText}>
-                ♥ ◇ : 스쿼트{'\n'}♤ : 왼쪽 런지{'\n'}♧ : 오른쪽 런지
+                ♥ ◇ : Squat{'\n'}♤ : Left Lunge{'\n'}♧ : Right Lunge
               </Text>
-              <Text style={S.disclaimerWorkTitle}>숫자는 운동횟수를 의미합니다.</Text>
+              <Text style={S.disclaimerWorkTitle}>Numbers indicate the number of workouts.</Text>
               <Text style={S.disclaimerWorkText}>
-                2 ~ 10 : 각 숫자만큼 진행
-                {'\n'}A, J, Q, K : 11회
+                2 ~ 10 : progress by each number
+                {'\n'}A, J, Q, K : 11 times
               </Text>
             </View>
             <View style={S.modalViewC}>
@@ -48,17 +49,17 @@ const DescriptionModal = (props: DescriptionModalProps) => {
                   style={S.exampleImage}
                   source={require('../../../../static/images/6_of_clubs.png')}
                 />
-                <Text style={S.exampleText}>왼쪽 런지 6회</Text>
+                <Text style={S.exampleText}>Left Lunge 6 times</Text>
               </View>
               <View style={S.example}>
                 <Image
                   style={S.exampleImage}
                   source={require('../../../../static/images/jack_of_hearts.png')}
                 />
-                <Text style={S.exampleText}>스쿼트 11회</Text>
+                <Text style={S.exampleText}>Squat 11 times</Text>
               </View>
             </View>
-            <Text style={S.disclaimerJoker}>* 조커는 스쿼트 11회입니다.</Text>
+            <Text style={S.disclaimerJoker}>* The Joker is 11 squats.</Text>
           </View>
         </View>
       </TouchableOpacity>

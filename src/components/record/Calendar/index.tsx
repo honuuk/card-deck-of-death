@@ -41,9 +41,16 @@ const CalendarComponent = () => {
 
     return (
       <View style={S.recordTextWrap}>
-        <Text style={S.recordText}>결과: {result}</Text>
-        <Text style={S.recordText}>남은 시간: {remainTime}</Text>
-        <Text style={S.recordText}>남은 카드: {remainCard}</Text>
+        <Text style={S.recordTextHeader}>Today's best record</Text>
+        <Text style={S.recordText}>
+          Result: <Text style={S.recordValue}> {result}</Text>
+        </Text>
+        <Text style={S.recordText}>
+          Remaining time: <Text style={S.recordValue}>{remainTime}</Text>
+        </Text>
+        <Text style={S.recordText}>
+          Remaining card: <Text style={S.recordValue}>{remainCard}</Text>
+        </Text>
       </View>
     );
   };
