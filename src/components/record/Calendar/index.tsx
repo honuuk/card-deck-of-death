@@ -39,17 +39,14 @@ const CalendarComponent = () => {
     const { result, remainTime, remainCard } = record;
     if (!result) return null;
 
+    const isSuccess = result === 'Success';
+
     return (
       <View style={S.recordTextWrap}>
-        <Text style={S.recordTextHeader}>Today's best record</Text>
+        <Text style={S.recordTextHeader}>Best record of the day</Text>
+        <Text style={S.recordResult}>{result}</Text>
         <Text style={S.recordText}>
-          Result: <Text style={S.recordValue}> {result}</Text>
-        </Text>
-        <Text style={S.recordText}>
-          Remaining time: <Text style={S.recordValue}>{remainTime}</Text>
-        </Text>
-        <Text style={S.recordText}>
-          Remaining card: <Text style={S.recordValue}>{remainCard}</Text>
+          {isSuccess ? remainTime : `${remainCard} card${remainCard > 1 ? 's' : ''} left`}
         </Text>
       </View>
     );

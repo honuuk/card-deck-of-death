@@ -13,23 +13,24 @@ const styles = StyleSheet.create({
   },
   recordTextHeader: {
     fontFamily: 'NotoSansKR-Bold',
-    fontSize: 25,
+    fontSize: 20,
     color: '#fff',
-    marginBottom: 8,
+  },
+  recordResult: {
+    fontFamily: 'NotoSansKR-Bold',
+    fontSize: 40,
+    color: '#fff',
+    marginVertical: 8,
   },
   recordText: {
     fontFamily: 'NotoSansKR-Bold',
     fontSize: 20,
     color: '#fff',
   },
-  recordValue: {
-    fontFamily: 'NotoSansKR-Bold',
-    fontSize: 20,
-    color: '#000',
-  },
   recordTextWrap: {
     flex: 1,
     justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 
