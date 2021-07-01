@@ -36,18 +36,18 @@ const CalendarComponent = () => {
   };
 
   const renderResult = (record: Record) => {
-    const { result, remainTime, remainCard } = record;
+    const { result, timeRecord, remainCard } = record;
     if (!result) return null;
 
     const isSuccess = result === 'Success';
+    const successText = timeRecord;
+    const failText = `${remainCard} card${remainCard > 1 ? 's' : ''} left`;
 
     return (
       <View style={S.recordTextWrap}>
         <Text style={S.recordTextHeader}>Best record of the day</Text>
         <Text style={S.recordResult}>{result}</Text>
-        <Text style={S.recordText}>
-          {isSuccess ? remainTime : `${remainCard} card${remainCard > 1 ? 's' : ''} left`}
-        </Text>
+        <Text style={S.recordText}>{isSuccess ? successText : failText}</Text>
       </View>
     );
   };

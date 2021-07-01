@@ -69,15 +69,15 @@ const WorkContainer = (props: WorkContainerProps) => {
 
   const makeRecord = (): Record => {
     const result = cards.length === 0 ? 'Success' : 'Fail';
-    const remainTime = formatTime(endTime - time);
+    const timeRecord = formatTime(900000 - (endTime - time));
     const remainCard = cards.length;
-    return { result, remainCard, remainTime };
+    return { result, remainCard, timeRecord };
   };
 
   const compareData = (a: Record, b: Record): Record => {
     if (a.result !== b.result) return a.result === 'Success' ? a : b;
     if (a.result === 'Success')
-      return timeToInteger(a.remainTime) > timeToInteger(b.remainTime) ? a : b;
+      return timeToInteger(a.timeRecord) < timeToInteger(b.timeRecord) ? a : b;
     return a.remainCard < b.remainCard ? a : b;
   };
 

@@ -63,6 +63,6 @@ export interface ResultProps {
 export interface Record {
   date?: string;
   result: 'Success' | 'Fail';
-  remainTime: string;
+  timeRecord: string;
   remainCard: number;
 }
