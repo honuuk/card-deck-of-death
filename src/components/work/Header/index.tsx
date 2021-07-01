@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity, View, Image } from 'react-native';
+import { TouchableOpacity, View, Image, Text } from 'react-native';
 
 import { HeaderProps } from '../../../../types';
 import S from './style';
@@ -14,6 +14,7 @@ const Header = (props: HeaderProps) => {
           source={require('../../../../static/images/prev_arrow.png')}
           resizeMode='contain'
         />
+        <Text style={S.back_text}>back</Text>
       </TouchableOpacity>
     </View>
   );

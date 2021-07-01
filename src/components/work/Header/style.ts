@@ -8,12 +8,20 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    width: '15%',
+    borderColor: 'black',
+    flexDirection: 'row',
+    paddingHorizontal: 24,
   },
   arrow_img: {
+    width: 20,
+    height: 20,
+  },
+  back_text: {
     flex: 1,
-    width: '30%',
-    top: '10%',
+    fontSize: 20,
+    color: '#b7b7b7',
+    fontFamily: 'NotoSansKR-Bold',
+    marginLeft: 8,
   },
 });
 
