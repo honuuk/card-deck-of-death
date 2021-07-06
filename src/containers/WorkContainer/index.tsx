@@ -1,7 +1,8 @@
 import { useFonts } from '@expo-google-fonts/inter';
+import { AdMobBanner } from 'expo-ads-admob';
 import { Audio } from 'expo-av';
 import React, { useEffect, useState } from 'react';
-import { Text, View } from 'react-native';
+import { Platform, View } from 'react-native';
 
 import { Record, WorkContainerProps } from '../../../types';
 import Cards from '../../components/work/Cards';
@@ -19,6 +20,11 @@ const WorkContainer = (props: WorkContainerProps) => {
   const [endTime, setEndTime] = useState<number>(0);
   const [time, setTime] = useState<number>(0);
   const [intervalId, setIntervalId] = useState<NodeJS.Timeout | number>();
+
+  const adUnitId = Platform.select({
+    ios: 'ca-app-pub-3940256099942544/2934735716',
+    android: 'ca-app-pub-3940256099942544/6300978111',
+  });
 
   const isEnd = (!!endTime && endTime === time) || cards.length === 0;
 
@@ -129,7 +135,11 @@ const WorkContainer = (props: WorkContainerProps) => {
         <Description isEnd={isEnd} selectedCard={selectedCard} handleGoBack={handleGoBack} />
       </View>
       <View style={S.footer}>
-        <Text>AD</Text>
+        <AdMobBanner
+          adUnitID={adUnitId}
+          servePersonalizedAds
+          onDidFailToReceiveAdWithError={(err) => console.log(err)}
+        />
       </View>
     </View>
   );

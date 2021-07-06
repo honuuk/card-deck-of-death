@@ -14,11 +14,19 @@
       "fallbackToCacheTimeout": 0
     },
     "assetBundlePatterns": ["**/*"],
-    "ios": {
-      "supportsTablet": true
-    },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "android": {
+      "config": {
+        "googleMobileAdsAppId": "ca-app-pub-5276803490370133~2258538382"
+      }
+    },
+    "ios": {
+      "supportsTablet": true,
+      "config": {
+        "googleMobileAdsAppId": "ca-app-pub-5276803490370133~4175336854"
+      }
     }
   }
 }

@@ -13,6 +13,7 @@ const styles = StyleSheet.create({
   },
   ad: {
     height: 70,
+    flexDirection: 'column-reverse',
   },
 });
 

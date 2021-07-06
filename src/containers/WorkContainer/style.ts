@@ -11,6 +11,7 @@ const styles = StyleSheet.create({
   },
   footer: {
     height: 70,
+    flexDirection: 'column-reverse',
   },
 });
 
