@@ -44,6 +44,9 @@ const LandingContainer = (props: LandingContainerProps) => {
       <TouchableOpacity style={S.button} onPress={() => navigation.navigate('Work')}>
         <Text style={S.buttonTextgmd}>Play Now</Text>
       </TouchableOpacity>
+      {/* <TouchableOpacity style={S.button} onPress={() => navigation.navigate('Record')}>
+        <Text style={S.buttonTextgmd}>My Records</Text>
+      </TouchableOpacity> */}
     </View>
   );
 };

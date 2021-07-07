@@ -29,17 +29,19 @@ const DescriptionModal = (props: DescriptionModalProps) => {
             <View style={S.modalViewA}>
               <Text style={S.disclaimerWorkTitle}>What is Card Squat?</Text>
               <Text style={S.disclaimerWorkText}>
-                This exercise method was designed to effectively exercise the lower body without
-                exercise equipment in American prisons. Here's how. Flip the card over and perform
-                the exercise according to the card's shape and number.
+                This workout was used in American prisons to exercise the lower body effectively
+                without any equipment. To start, flip the card over and perform according to the
+                card's shape and number.
               </Text>
-              <Text style={S.disclaimerWorkTitle}>♥ ◇ ♤ ♧ means exercise type.</Text>
+              <Text style={S.disclaimerWorkTitle}>♥ ◇ ♤ ♧ means types of workout.</Text>
               <Text style={S.disclaimerWorkText}>
                 ♥ ◇ : Squat{'\n'}♤ : Left Lunge{'\n'}♧ : Right Lunge
               </Text>
-              <Text style={S.disclaimerWorkTitle}>Numbers indicate the number of workouts.</Text>
+              <Text style={S.disclaimerWorkTitle}>
+                Numbers on the card indicates the number of workouts.
+              </Text>
               <Text style={S.disclaimerWorkText}>
-                2 ~ 10 : progress by each number
+                2 ~ 10 : perform per number
                 {'\n'}A, J, Q, K : 11 times
               </Text>
             </View>
@@ -49,17 +51,17 @@ const DescriptionModal = (props: DescriptionModalProps) => {
                   style={S.exampleImage}
                   source={require('../../../../static/images/6_of_clubs.png')}
                 />
-                <Text style={S.exampleText}>Left Lunge 6 times</Text>
+                <Text style={S.exampleText}>6 times of left lunges</Text>
               </View>
               <View style={S.example}>
                 <Image
                   style={S.exampleImage}
                   source={require('../../../../static/images/jack_of_hearts.png')}
                 />
-                <Text style={S.exampleText}>Squat 11 times</Text>
+                <Text style={S.exampleText}>11 times of squats</Text>
               </View>
             </View>
-            <Text style={S.disclaimerJoker}>* The Joker is 11 squats.</Text>
+            <Text style={S.disclaimerJoker}>* Joker means 11 times of squats</Text>
           </View>
         </View>
       </TouchableOpacity>

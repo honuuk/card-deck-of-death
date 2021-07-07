@@ -53,6 +53,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#1CD8D2',
     borderRadius: 10,
     justifyContent: 'center',
+    marginVertical: 4,
   },
   buttonTextgmd: {
     fontFamily: 'NotoSansKR-Bold',
