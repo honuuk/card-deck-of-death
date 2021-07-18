@@ -34,19 +34,19 @@ const LandingContainer = (props: LandingContainerProps) => {
         <Text style={S.howToIcon}>?</Text>
       </TouchableOpacity>
       <View style={S.TitleWrap}>
-        <Animatable.Text style={S.gameTitleEn} animation='bounceIn'>
+        <Animatable.Text style={S.gameTitleCard} animation='bounceIn'>
           Card
         </Animatable.Text>
-        <Animatable.Text style={{ ...S.gameTitleEn, ...S.gameTitleDeath }} animation='bounceIn'>
+        <Animatable.Text style={S.gameTitleSquat} animation='bounceIn'>
           Squat
         </Animatable.Text>
+        <TouchableOpacity style={S.buttonPlay} onPress={() => navigation.navigate('Work')}>
+          <Text style={S.buttonTextgmd}>Play Now</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={S.buttonRecord} onPress={() => navigation.navigate('Record')}>
+          <Text style={S.buttonTextgmd}>My Records</Text>
+        </TouchableOpacity>
       </View>
-      <TouchableOpacity style={S.button} onPress={() => navigation.navigate('Work')}>
-        <Text style={S.buttonTextgmd}>Play Now</Text>
-      </TouchableOpacity>
-      {/* <TouchableOpacity style={S.button} onPress={() => navigation.navigate('Record')}>
-        <Text style={S.buttonTextgmd}>My Records</Text>
-      </TouchableOpacity> */}
     </View>
   );
 };

@@ -11,14 +11,10 @@ const DescriptionModal = (props: DescriptionModalProps) => {
 
   return (
     <Modal
-      animationType='fade'
       transparent
       visible={isModalOpen}
-      onRequestClose={() => {
-        Alert.alert('Modal has been closed.');
-        setIsModalOpen((prevIsModalOpen) => !prevIsModalOpen);
-      }}>
-      <TouchableOpacity style={S.modalViewDimmed} onPress={() => setIsModalOpen(false)}>
+      onRequestClose={() => setIsModalOpen((prevIsModalOpen) => !prevIsModalOpen)}>
+      <TouchableOpacity activeOpacity={1} style={S.modalViewDimmed} onPress={() => setIsModalOpen(false)}>
         <View style={S.modalViewTextArea}>
           <View style={S.modalViewHeader}>
             <View style={S.modalViewCloseButton}>

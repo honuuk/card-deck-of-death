@@ -27,8 +27,8 @@ const Description = (props: DescriptionProps) => {
     <View style={S.action_name}>
       {!isEnd && (
         <>
+          <Text style={S.action_name_text}>{selectedCard !== null && `${getTimes(selectedCard)} of`}</Text>
           <Text style={S.action_name_text}>{selectedCard !== null && getType(selectedCard)}</Text>
-          <Text style={S.action_name_text}>{selectedCard !== null && getTimes(selectedCard)}</Text>
         </>
       )}
     </View>

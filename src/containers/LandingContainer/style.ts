@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: '#ffffff',
     alignItems: 'center',
-    justifyContent: 'center',
+    // justifyContent: 'center',
   },
   howToIconWrap: {
     width: 30,
@@ -27,30 +27,35 @@ const styles = StyleSheet.create({
   },
   TitleWrap: {
     marginBottom: 30,
+    top: '35%',
   },
-  gameTitleKo: {
-    fontFamily: 'NotoSansKR-Bold',
-    fontSize: 50,
-    color: '#000',
-  },
-  gameTitleEn: {
+  gameTitleCard: {
     fontFamily: 'NotoSansKR-Black',
     fontSize: 50,
     color: '#787878',
     textAlign: 'center',
     lineHeight: 55,
   },
-  gameTitleOf: {
-    fontSize: 35,
-    marginTop: -10,
-  },
-  gameTitleDeath: {
+  gameTitleSquat: {
+    fontFamily: 'NotoSansKR-Black',
+    fontSize: 50,
+    textAlign: 'center',
+    lineHeight: 55,
     color: '#000',
+    marginBottom: 20,
   },
-  button: {
-    width: '60%',
-    height: '8%',
+  buttonPlay: {
+    width: 230,
+    height: 50,
     backgroundColor: '#1CD8D2',
+    borderRadius: 10,
+    justifyContent: 'center',
+    marginVertical: 4,
+  },
+  buttonRecord: {
+    width: 230,
+    height: 50,
+    backgroundColor: '#787878',
     borderRadius: 10,
     justifyContent: 'center',
     marginVertical: 4,

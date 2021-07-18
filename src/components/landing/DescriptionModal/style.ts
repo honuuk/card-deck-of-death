@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     fontFamily: 'NotoSansKR-Light',
   },
   modalViewA: {
-    marginBottom: 20,
+    marginBottom: 10,
   },
   workOutType: {
     marginBottom: 20,
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#1CD8D2',
     fontWeight: 'bold',
-    marginBottom: 8,
+    marginBottom: 4,
     marginTop: 16,
   },
   disclaimerWorkText: {
@@ -70,8 +70,10 @@ const styles = StyleSheet.create({
   },
   exampleText: {
     fontFamily: 'NotoSansKR-Medium',
+    fontSize: 12,
     height: 20,
     color: '#6e6e6e',
+    marginTop: 5,
   },
   disclaimerJoker: {
     fontFamily: 'NotoSansKR-Regular',
