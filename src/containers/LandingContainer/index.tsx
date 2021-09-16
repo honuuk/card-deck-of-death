@@ -53,11 +53,11 @@ const LandingContainer = (props: LandingContainerProps) => {
           Squat
         </Animatable.Text>
       </View>
-      <TouchableOpacity style={S.button} onPress={handleButtonPress('Work')}>
-        <Text style={S.buttonTextgmd}>Play Now</Text>
+      <TouchableOpacity style={S.playButton} onPress={handleButtonPress('Work')}>
+        <Text style={S.playButtonTextgmd}>Play Now</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={S.button2} onPress={handleButtonPress('Record')}>
-        <Text style={S.buttonTextgmd2}>My Records</Text>
+      <TouchableOpacity style={S.recordButton} onPress={handleButtonPress('Record')}>
+        <Text style={S.recordButtonTextgmd}>My Records</Text>
       </TouchableOpacity>
     </View>
   );

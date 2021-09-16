@@ -51,17 +51,17 @@ const styles = StyleSheet.create({
   gameTitleDeath: {
     color: '#000',
   },
-  button: {
-    width: '60%',
-    height: '8%',
+  playButton: {
+    width: 230,
+    height: 60,
     backgroundColor: '#1CD8D2',
     borderRadius: 10,
     justifyContent: 'center',
     marginVertical: 4,
   },
-  button2: {
-    width: '60%',
-    height: '8%',
+  recordButton: {
+    width: 230,
+    height: 60,
     backgroundColor: '#fff',
     borderRadius: 10,
     justifyContent: 'center',
@@ -69,19 +69,21 @@ const styles = StyleSheet.create({
     borderColor: '#1cd8d2',
     borderWidth: 2,
   },
-  buttonTextgmd: {
+  playButtonTextgmd: {
     fontFamily: 'NotoSansKR-Bold',
     fontSize: 30,
     textAlign: 'center',
     color: '#fff',
     textAlignVertical: 'center',
+    transform: [{ translateY: -2 }],
   },
-  buttonTextgmd2: {
+  recordButtonTextgmd: {
     fontFamily: 'NotoSansKR-Bold',
     fontSize: 30,
     textAlign: 'center',
     color: '#1CD8D2',
     textAlignVertical: 'center',
+    transform: [{ translateY: -2 }],
   },
   modalViewDimmed: {
     width: '100%',
