@@ -18,7 +18,10 @@ const DescriptionModal = (props: DescriptionModalProps) => {
         Alert.alert('Modal has been closed.');
         setIsModalOpen((prevIsModalOpen) => !prevIsModalOpen);
       }}>
-      <TouchableOpacity style={S.modalViewDimmed} onPress={() => setIsModalOpen(false)}>
+      <TouchableOpacity
+        style={S.modalViewDimmed}
+        activeOpacity={1}
+        onPress={() => setIsModalOpen(false)}>
         <View style={S.modalViewTextArea}>
           <View style={S.modalViewHeader}>
             <View style={S.modalViewCloseButton}>
@@ -33,17 +36,47 @@ const DescriptionModal = (props: DescriptionModalProps) => {
                 without any equipment. To start, flip the card over and perform according to the
                 card's shape and number.
               </Text>
-              <Text style={S.disclaimerWorkTitle}>♥ ◇ ♤ ♧ means types of workout.</Text>
+              <Text style={S.disclaimerWorkTitle}>
+                <Image style={S.cardIcon} source={require('../../../../static/images/heart.png')} />
+                <Image
+                  style={S.cardIcon}
+                  source={require('../../../../static/images/diamond.png')}
+                />
+                <Image style={S.cardIcon} source={require('../../../../static/images/spade.png')} />
+                <Image style={S.cardIcon} source={require('../../../../static/images/club.png')} />
+                {/* ♥ ◇ ♤ ♧  */}
+                means types of workout.
+              </Text>
               <Text style={S.disclaimerWorkText}>
-                ♥ ◇ : Squat{'\n'}♤ : Left Lunge{'\n'}♧ : Right Lunge
+                <Image
+                  style={S.cardIconSmall}
+                  source={require('../../../../static/images/heart.png')}
+                />
+                <Image
+                  style={S.cardIconSmall}
+                  source={require('../../../../static/images/diamond.png')}
+                />
+                : Squat
+              </Text>
+              <Text style={S.disclaimerWorkText}>
+                <Image
+                  style={S.cardIconSmall}
+                  source={require('../../../../static/images/spade.png')}
+                />
+                : Left Lunge
+              </Text>
+              <Text style={S.disclaimerWorkText}>
+                <Image
+                  style={S.cardIconSmall}
+                  source={require('../../../../static/images/club.png')}
+                />
+                : Right Lunge
               </Text>
               <Text style={S.disclaimerWorkTitle}>
                 Numbers on the card indicates the number of workouts.
               </Text>
-              <Text style={S.disclaimerWorkText}>
-                2 ~ 10 : perform per number
-                {'\n'}A, J, Q, K : 11 times
-              </Text>
+              <Text style={S.disclaimerWorkText}>2 ~ 10 : perform per number</Text>
+              <Text style={S.disclaimerWorkText}>A, J, Q, K : 11 times</Text>
             </View>
             <View style={S.modalViewC}>
               <View style={S.example}>

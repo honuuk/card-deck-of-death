@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
     width: '80%',
     height: '80%',
     backgroundColor: '#fff',
+    borderRadius: 8,
   },
   modalViewWrap: {
     paddingHorizontal: 15,
@@ -30,12 +31,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   modalViewCloseText: {
-    color: '#000',
+    color: '#828282',
     fontSize: 24,
     fontFamily: 'NotoSansKR-Light',
   },
   modalViewA: {
-    marginBottom: 20,
+    marginBottom: 10,
   },
   workOutType: {
     marginBottom: 20,
@@ -51,9 +52,23 @@ const styles = StyleSheet.create({
     marginBottom: 8,
     marginTop: 16,
   },
+  cardIcon: {
+    resizeMode: 'contain',
+    width: 16,
+    height: 16,
+    marginRight: 4,
+  },
+  cardIconSmall: {
+    resizeMode: 'contain',
+    width: 12,
+    height: 12,
+    marginRight: 4,
+  },
   disclaimerWorkText: {
     fontFamily: 'NotoSansKR-Regular',
     fontSize: 12,
+    textAlignVertical: 'center',
+    color: '#828282',
   },
   modalViewC: {
     flex: 1,
@@ -63,6 +78,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     alignItems: 'center',
+    overflow: 'visible',
   },
   exampleImage: {
     flex: 1,
@@ -70,8 +86,9 @@ const styles = StyleSheet.create({
   },
   exampleText: {
     fontFamily: 'NotoSansKR-Medium',
-    height: 20,
+    fontSize: 12,
     color: '#6e6e6e',
+    marginTop: 8,
   },
   disclaimerJoker: {
     fontFamily: 'NotoSansKR-Regular',
