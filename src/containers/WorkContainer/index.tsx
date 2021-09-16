@@ -1,6 +1,5 @@
 import { useFonts } from '@expo-google-fonts/inter';
 import { AdMobBanner } from 'expo-ads-admob';
-import { Audio } from 'expo-av';
 import React, { useEffect, useState } from 'react';
 import { Platform, View } from 'react-native';
 
@@ -11,6 +10,7 @@ import Header from '../../components/work/Header';
 import Timer from '../../components/work/Timer';
 import { formatTime, getToday, timeToInteger } from '../../utils/date';
 import { getDeviceCollection } from '../../utils/device';
+import { playCardClickSound, playClickSound } from '../../utils/playSound';
 import S from './style';
 
 const WorkContainer = (props: WorkContainerProps) => {
@@ -43,14 +43,9 @@ const WorkContainer = (props: WorkContainerProps) => {
   };
 
   const handleGoBack = () => {
+    playClickSound();
+    handleClear();
     navigation.goBack();
-  };
-
-  const playSound = async () => {
-    const { sound } = await Audio.Sound.createAsync(
-      require('../../../static/audio/button-click.wav')
-    );
-    await sound.playAsync();
   };
 
   const startTimer = () => {
@@ -64,7 +59,7 @@ const WorkContainer = (props: WorkContainerProps) => {
   };
 
   const handlePressCard = () => {
-    playSound();
+    playCardClickSound();
 
     if (!endTime) startTimer();
 
@@ -102,9 +97,6 @@ const WorkContainer = (props: WorkContainerProps) => {
       clearInterval(intervalId as NodeJS.Timeout);
       checkRecordAndSave();
     }
-    navigation.addListener('beforeRemove', () => {
-      handleClear();
-    });
   }, [isEnd]);
 
   const [fontsLoaded] = useFonts({

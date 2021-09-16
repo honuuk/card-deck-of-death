@@ -5,6 +5,7 @@ import * as Animatable from 'react-native-animatable';
 
 import { LandingContainerProps } from '../../../types';
 import DescriptionModal from '../../components/landing/DescriptionModal';
+import { playClickSound } from '../../utils/playSound';
 import S from './style';
 
 const LandingContainer = (props: LandingContainerProps) => {
@@ -23,6 +24,16 @@ const LandingContainer = (props: LandingContainerProps) => {
     return null;
   }
 
+  const handleButtonPress = (component: 'Work' | 'Record') => () => {
+    playClickSound();
+    navigation.navigate(component);
+  };
+
+  const handleDescriptionPress = () => {
+    playClickSound();
+    setIsModalOpen(true);
+  };
+
   return (
     <View style={S.container}>
       <DescriptionModal
@@ -30,7 +41,7 @@ const LandingContainer = (props: LandingContainerProps) => {
         setIsModalOpen={setIsModalOpen}
         fontLoaded={fontsLoaded}
       />
-      <TouchableOpacity style={S.howToIconWrap} onPress={() => setIsModalOpen(true)}>
+      <TouchableOpacity style={S.howToIconWrap} onPress={handleDescriptionPress}>
         <Text style={S.howToIcon}>?</Text>
       </TouchableOpacity>
       <View style={S.emptySpace} />
@@ -42,10 +53,10 @@ const LandingContainer = (props: LandingContainerProps) => {
           Squat
         </Animatable.Text>
       </View>
-      <TouchableOpacity style={S.button} onPress={() => navigation.navigate('Work')}>
+      <TouchableOpacity style={S.button} onPress={handleButtonPress('Work')}>
         <Text style={S.buttonTextgmd}>Play Now</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={S.button2} onPress={() => navigation.navigate('Record')}>
+      <TouchableOpacity style={S.button2} onPress={handleButtonPress('Record')}>
         <Text style={S.buttonTextgmd2}>My Records</Text>
       </TouchableOpacity>
     </View>

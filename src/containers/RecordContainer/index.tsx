@@ -6,6 +6,7 @@ import { Platform, View } from 'react-native';
 import { RecordContainerProps } from '../../../types';
 import CalendarComponent from '../../components/record/Calendar';
 import Header from '../../components/work/Header';
+import { playClickSound } from '../../utils/playSound';
 import S from './style';
 
 const RecordContainer = ({ navigation }: RecordContainerProps) => {
@@ -28,6 +29,7 @@ const RecordContainer = ({ navigation }: RecordContainerProps) => {
   }
 
   const handleGoBack = () => {
+    playClickSound();
     navigation.goBack();
   };
 

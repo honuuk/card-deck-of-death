@@ -5,6 +5,7 @@ import { Calendar, DateObject } from 'react-native-calendars';
 import { Record } from '../../../../types';
 import { getToday } from '../../../utils/date';
 import { getDeviceCollection } from '../../../utils/device';
+import { playClickSound } from '../../../utils/playSound';
 import S from './style';
 
 const colorMap = {
@@ -32,7 +33,18 @@ const CalendarComponent = () => {
   };
 
   const handleDatePress = (day: DateObject) => {
+    playClickSound();
     setSelectedRecord(records.find((record) => record.date === day.dateString) || ({} as Record));
+  };
+
+  const handlePressLeftArrow = (substractMonth: () => void) => {
+    substractMonth();
+    playClickSound();
+  };
+
+  const handlePressRightArrow = (addMonth: () => void) => {
+    addMonth();
+    playClickSound();
   };
 
   const renderResult = (record: Record) => {
@@ -71,7 +83,12 @@ const CalendarComponent = () => {
 
   return (
     <View style={S.container}>
-      <Calendar markedDates={makeMarkedDates(records)} onDayPress={handleDatePress} />
+      <Calendar
+        markedDates={makeMarkedDates(records)}
+        onDayPress={handleDatePress}
+        onPressArrowLeft={handlePressLeftArrow}
+        onPressArrowRight={handlePressRightArrow}
+      />
       <View
         style={{
           ...S.record,
