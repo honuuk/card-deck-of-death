@@ -33,6 +33,7 @@ const LandingContainer = (props: LandingContainerProps) => {
       <TouchableOpacity style={S.howToIconWrap} onPress={() => setIsModalOpen(true)}>
         <Text style={S.howToIcon}>?</Text>
       </TouchableOpacity>
+      <View style={S.emptySpace} />
       <View style={S.TitleWrap}>
         <Animatable.Text style={S.gameTitleEn} animation='bounceIn'>
           Card
@@ -44,9 +45,9 @@ const LandingContainer = (props: LandingContainerProps) => {
       <TouchableOpacity style={S.button} onPress={() => navigation.navigate('Work')}>
         <Text style={S.buttonTextgmd}>Play Now</Text>
       </TouchableOpacity>
-      {/* <TouchableOpacity style={S.button} onPress={() => navigation.navigate('Record')}>
-        <Text style={S.buttonTextgmd}>My Records</Text>
-      </TouchableOpacity> */}
+      <TouchableOpacity style={S.button2} onPress={() => navigation.navigate('Record')}>
+        <Text style={S.buttonTextgmd2}>My Records</Text>
+      </TouchableOpacity>
     </View>
   );
 };

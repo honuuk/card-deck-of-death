@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   modalViewCloseText: {
-    color: '#828282',
+    color: '#3d3d3d',
     fontSize: 24,
     fontFamily: 'NotoSansKR-Light',
   },
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     fontFamily: 'NotoSansKR-Regular',
     fontSize: 12,
     textAlignVertical: 'center',
-    color: '#828282',
+    color: '#3d3d3d',
   },
   modalViewC: {
     flex: 1,
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     textAlign: 'right',
     fontSize: 12,
     marginTop: 10,
-    color: '#828282',
+    color: '#3d3d3d',
   },
 });
 
