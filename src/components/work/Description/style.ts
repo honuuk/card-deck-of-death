@@ -4,7 +4,6 @@ const styles = StyleSheet.create({
   action_name: {
     flex: 1,
     width: '100%',
-    justifyContent: 'center',
     alignItems: 'center',
   },
   action_name_text: {

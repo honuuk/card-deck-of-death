@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#1CD8D2',
     fontWeight: 'bold',
-    marginBottom: 8,
+    marginBottom: 4,
     marginTop: 16,
   },
   cardIcon: {

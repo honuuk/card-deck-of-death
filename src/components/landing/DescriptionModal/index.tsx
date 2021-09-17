@@ -11,7 +11,6 @@ const DescriptionModal = (props: DescriptionModalProps) => {
 
   return (
     <Modal
-      animationType='fade'
       transparent
       visible={isModalOpen}
       onRequestClose={() => {
