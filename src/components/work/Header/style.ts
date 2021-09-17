@@ -15,13 +15,15 @@ const styles = StyleSheet.create({
   arrow_img: {
     width: 20,
     height: 20,
+    transform: [{ translateX: -5 }],
   },
   back_text: {
     flex: 1,
     fontSize: 20,
-    color: '#b7b7b7',
+    color: '#787878',
     fontFamily: 'NotoSansKR-Bold',
     marginLeft: 8,
+    transform: [{ translateY: -2 }, { translateX: -10 }],
   },
 });
 

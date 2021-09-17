@@ -46,10 +46,10 @@ const LandingContainer = (props: LandingContainerProps) => {
       </TouchableOpacity>
       <View style={S.emptySpace} />
       <View style={S.TitleWrap}>
-        <Animatable.Text style={S.gameTitleEn} animation='bounceIn'>
+        <Animatable.Text style={S.gameTitleCard} animation='bounceIn'>
           Card
         </Animatable.Text>
-        <Animatable.Text style={{ ...S.gameTitleEn, ...S.gameTitleDeath }} animation='bounceIn'>
+        <Animatable.Text style={S.gameTitleSquat} animation='bounceIn'>
           Squat
         </Animatable.Text>
       </View>

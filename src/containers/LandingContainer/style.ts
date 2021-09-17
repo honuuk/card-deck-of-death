@@ -37,19 +37,19 @@ const styles = StyleSheet.create({
     fontSize: 50,
     color: '#000',
   },
-  gameTitleEn: {
+  gameTitleCard: {
     fontFamily: 'NotoSansKR-Black',
     fontSize: 50,
     color: '#787878',
     textAlign: 'center',
     lineHeight: 55,
   },
-  gameTitleOf: {
-    fontSize: 35,
-    marginTop: -10,
-  },
-  gameTitleDeath: {
-    color: '#000',
+  gameTitleSquat: {
+    fontFamily: 'NotoSansKR-Black',
+    fontSize: 50,
+    textAlign: 'center',
+    lineHeight: 55,
+    color: '#3d3d3d',
   },
   playButton: {
     width: 230,
