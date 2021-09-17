@@ -29,13 +29,8 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '10%',
   },
-  TitleWrap: {
+  titleWrap: {
     marginBottom: 30,
-  },
-  gameTitleKo: {
-    fontFamily: 'NotoSansKR-Bold',
-    fontSize: 50,
-    color: '#000',
   },
   gameTitleCard: {
     fontFamily: 'NotoSansKR-Black',
@@ -84,28 +79,6 @@ const styles = StyleSheet.create({
     color: '#1CD8D2',
     textAlignVertical: 'center',
     transform: [{ translateY: -2 }],
-  },
-  modalViewDimmed: {
-    width: '100%',
-    height: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'rgba(0,0,0,0.5)',
-  },
-  modalViewTextArea: {
-    width: '80%',
-    height: '80%',
-    backgroundColor: '#fff',
-  },
-  modalViewClose: {
-    width: 30,
-    height: 30,
-    position: 'absolute',
-    top: 20,
-    color: '#000',
-    right: 20,
-    textAlign: 'center',
-    fontSize: 28,
   },
 });
 

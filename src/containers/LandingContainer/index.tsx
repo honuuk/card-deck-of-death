@@ -45,7 +45,7 @@ const LandingContainer = (props: LandingContainerProps) => {
         <Text style={S.howToIcon}>?</Text>
       </TouchableOpacity>
       <View style={S.emptySpace} />
-      <View style={S.TitleWrap}>
+      <View style={S.titleWrap}>
         <Animatable.Text style={S.gameTitleCard} animation='bounceIn'>
           Card
         </Animatable.Text>
