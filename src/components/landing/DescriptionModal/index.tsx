@@ -43,7 +43,6 @@ const DescriptionModal = (props: DescriptionModalProps) => {
                 />
                 <Image style={S.cardIcon} source={require('../../../../static/images/spade.png')} />
                 <Image style={S.cardIcon} source={require('../../../../static/images/club.png')} />
-                {/* ♥ ◇ ♤ ♧  */}
                 means types of workout.
               </Text>
               <Text style={S.disclaimerWorkText}>

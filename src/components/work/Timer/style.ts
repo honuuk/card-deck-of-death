@@ -15,6 +15,7 @@ const styles = StyleSheet.create({
     textShadowColor: '#1c4abd',
     textShadowOffset: { width: 4, height: 4 },
     textShadowRadius: 0,
+    transform: [{ translateX: 1 }],
   },
 });
 

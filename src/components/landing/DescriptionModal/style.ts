@@ -57,12 +57,14 @@ const styles = StyleSheet.create({
     width: 16,
     height: 16,
     marginRight: 4,
+    transform: [{ translateX: -2 }, { translateY: 1 }],
   },
   cardIconSmall: {
     resizeMode: 'contain',
     width: 12,
     height: 12,
     marginRight: 4,
+    transform: [{ translateY: 1 }],
   },
   disclaimerWorkText: {
     fontFamily: 'NotoSansKR-Regular',

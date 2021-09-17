@@ -52,12 +52,6 @@ const LandingContainer = (props: LandingContainerProps) => {
         <Animatable.Text style={S.gameTitleSquat} animation='bounceIn'>
           Squat
         </Animatable.Text>
-        <TouchableOpacity style={S.buttonPlay} onPress={() => navigation.navigate('Work')}>
-          <Text style={S.buttonTextgmd}>Play Now</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={S.buttonRecord} onPress={() => navigation.navigate('Record')}>
-          <Text style={S.buttonTextgmd}>My Records</Text>
-        </TouchableOpacity>
       </View>
       <TouchableOpacity style={S.playButton} onPress={handleButtonPress('Work')}>
         <Text style={S.playButtonTextgmd}>Play Now</Text>
