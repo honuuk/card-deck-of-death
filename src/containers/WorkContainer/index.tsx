@@ -10,8 +10,11 @@ import Header from '../../components/work/Header';
 import Timer from '../../components/work/Timer';
 import { formatTime, getToday, timeToInteger } from '../../utils/date';
 import { getDeviceCollection } from '../../utils/device';
+import getEnvVars from '../../utils/environment';
 import { playCardClickSound, playClickSound } from '../../utils/playSound';
 import S from './style';
+
+const { IOS_AD_UNIT_ID, ANDROID_AD_UNIT_ID } = getEnvVars();
 
 const WorkContainer = (props: WorkContainerProps) => {
   const { navigation } = props;
@@ -22,8 +25,8 @@ const WorkContainer = (props: WorkContainerProps) => {
   const [intervalId, setIntervalId] = useState<NodeJS.Timeout | number>();
 
   const adUnitId = Platform.select({
-    ios: 'ca-app-pub-3940256099942544/2934735716',
-    android: 'ca-app-pub-3940256099942544/6300978111',
+    ios: IOS_AD_UNIT_ID,
+    android: ANDROID_AD_UNIT_ID,
   });
 
   const isEnd = (!!endTime && endTime === time) || cards.length === 0;

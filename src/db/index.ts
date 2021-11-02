@@ -1,6 +1,9 @@
-import { API_KEY, DATABASE_URL, PROJECT_ID, APP_ID } from '@env';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
+
+import getEnvVars from '../utils/environment';
+
+const { API_KEY, DATABASE_URL, PROJECT_ID, APP_ID } = getEnvVars();
 
 const firebaseConfig = {
   apiKey: API_KEY,

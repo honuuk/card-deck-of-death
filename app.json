@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "card_deck_of_death",
-    "slug": "card_deck_of_death",
+    "name": "card-squat",
+    "slug": "card-squat",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -18,11 +18,15 @@
       "favicon": "./assets/favicon.png"
     },
     "android": {
+      "package": "com.cardsquat.app",
+      "versionCode": 1,
       "config": {
         "googleMobileAdsAppId": "ca-app-pub-5276803490370133~2258538382"
       }
     },
     "ios": {
+      "bundleIdentifier": "com.cardsquat.app",
+      "buildNumber": "1.0.0",
       "supportsTablet": true,
       "config": {
         "googleMobileAdsAppId": "ca-app-pub-5276803490370133~4175336854"

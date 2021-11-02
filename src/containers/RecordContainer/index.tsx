@@ -6,13 +6,16 @@ import { Platform, View } from 'react-native';
 import { RecordContainerProps } from '../../../types';
 import CalendarComponent from '../../components/record/Calendar';
 import Header from '../../components/work/Header';
+import getEnvVars from '../../utils/environment';
 import { playClickSound } from '../../utils/playSound';
 import S from './style';
 
+const { IOS_AD_UNIT_ID, ANDROID_AD_UNIT_ID } = getEnvVars();
+
 const RecordContainer = ({ navigation }: RecordContainerProps) => {
   const adUnitId = Platform.select({
-    ios: 'ca-app-pub-3940256099942544/2934735716',
-    android: 'ca-app-pub-3940256099942544/6300978111',
+    ios: IOS_AD_UNIT_ID,
+    android: ANDROID_AD_UNIT_ID,
   });
 
   const [fontsLoaded] = useFonts({
